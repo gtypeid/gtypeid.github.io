@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main-view.css">
+    <script type="module" src="main-view.js"></script>
+    <title>main-view</title>
+</head>
+<body>
+    <div class="frame">
+        <svg xmlns="http://www.w3.org/2000/svg" over = "false" version="1.1" width="450" height="300" 
+        style="float: right; position: absolute; top: 0px; right: 0px; z-index: 0;">
+            <style over = "false">
+              circle {
+                animation-duration: 5s;
+                animation-timing-function: ease-in-out;
+                animation-iteration-count: infinite;
+              }
+              #one { animation-name: one; }
+              #two { animation-name: two; }
+              #three { animation-name: three; }
+              #four { animation-name: four; }
+              #five { animation-name: five; }
+              #six { animation-name: six; }
+              @keyframes one {
+                0% { transform: translate(0, 0); }
+                50% { transform: translate(10px, 10px); }
+                100% { transform: translate(0, 0); }
+              }
+              @keyframes two {
+                0% { transform: translate(0, 0); }
+                50% { transform: translate(-15px, 5px); }
+                100% { transform: translate(0, 0); }
+              }
+              @keyframes three {
+                0% { transform: translate(0, 0); }
+                50% { transform: translate(17px, 7px); }
+                100% { transform: translate(0, 0); }
+              }
+              @keyframes four {
+                0% { transform: translate(0, 0); }
+                50% { transform: translate(5px, -20px); }
+                100% { transform: translate(0, 0); }
+              }
+              @keyframes five {
+                0% { transform: translate(0, 0); }
+                50% { transform: translate(0, 5px); }
+                100% { transform: translate(0, 0); }
+              }
+              @keyframes six {
+                0% { transform: translate(0, 0); }
+                50% { transform: translate(20px, -5px); }
+                100% { transform: translate(0, 0); }
+              }
+            </style>
+            <defs over = "false">
+              <filter over = "false" id="goo">
+                <feGaussianBlur over = "false" in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix over = "false" in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -12" result="goo" />
+                <feComposite over = "false" in="SourceGraphic" in2="goo" operator="atop"/>
+              </filter>
+            </defs>
+            <g filter="url('#goo')" over = "false">
+              <circle over = "false" cx="400" cy="0" r="250" fill="#00ff99"/> 
+              <circle over = "false" id="one" cx="110" cy="30" r="100" fill="#00ff99"/> 
+              <circle over = "false" id="two" cx="110" cy="120" r="50" fill="#00ff99"/> 
+              <circle over = "false" id="three" cx="170" cy="130" r="80" fill="#00ff99"/> 
+              <circle over = "false" id="four" cx="225" cy="165" r="70" fill="#00ff99"/> 
+              <circle over = "false" id="five" cx="270" cy="200" r="50" fill="#00ff99"/> 
+              <circle over = "false" id="six" cx="370" cy="190" r="110" fill="#00ff99"/> 
+            </g>
+          </svg>
+          <div class="area">
+            <ul class="circles">
+                <li class="cli"></li>
+                <li class="cli"></li>
+                <li class="cli"></li>
+                <li class="cli"></li>
+                <li class="cli"></li>
+                <li class="cli"></li>
+                <li class="cli"></li>
+                <li class="cli"></li>
+                <li class="cli"></li>
+                <li class="cli"></li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>

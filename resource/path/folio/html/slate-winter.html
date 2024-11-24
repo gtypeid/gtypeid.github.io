@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="profile.css">
+    <script type="module" src="profile.js"></script>
+    <title>profile</title>
+</head>
+<body>
+    <div class="frame">
+        <div class="blind">
+            <div class="profile-box">
+                <div class="top">
+                    <div class="content">
+                        <div class="blockquote" style="margin-top: 100px; margin-bottom: 100px;">
+                            <p>프로젝트의 간단한 소개, 이미지 살펴보기, 핵심 구조, 간략한 코드 언급 순으로 진행 됩니다.</p>
+                            <p>현재 페이지는 두 개의 프로젝트 Slate, Winter의 디테일 뷰 입니다.</p>
+                            <p style="font-size: 1.8em; font-style: normal;">😊</p>
+                        </div>
+
+                        <h1>개요</h1>
+                        <h2>프로젝트 소개</h2>
+                        <h3>Slate</h3>
+                        <div class="thing">
+                            <p>프론트 뷰 동적 제작을 도와주는 구조를 설계하고 싶었습니다.
+                                <br>바닐라 본연의 HTML, CSS, JavaScript로 존재하는 것이 특징입니다. 
+                                <br>HTML, CSS, JavaScript를 하나로 묶어 위젯이라 부르며 렌더링합니다.
+                                <br>위젯으로 관리되는 동적 구조는 재사용성을 증가시키며 객체로서 관리됩니다.
+                                <br>또한 다수의 컴포넌트를 통해 Slate 내에서 생산성을 확장시킬 수 있습니다.
+                            </p>
+                        </div>
+
+                        <h3>Winter</h3>
+                        <div class="thing">
+                            <p>스프링의 생명주기를 참고한 Fake Spring 입니다.
+                                <br>java.sun.net.httpserver 모듈을 사용하여, 단순한 Http Server를 만들어 보았습니다. 
+                                <br>진입 라우팅을 Controller라 부르며 공통 로직을 숨겨 사용자는 비즈니스 로직에 집중하도록 구조화하였습니다.
+                                <br>Low Level단의 DB Connection의 반복되는 코드 또한 공통 처리 하여,
+                                <br>쿼리 전환 값 객체 매핑등의 프로세스를 자동화해보았습니다.
+                            </p>
+                        </div>
+
+                        <h2>사용기술</h2>
+                        <p>
+                            <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
+                        </p>
+                        <p>
+                            <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+                        </p>
+
+                        <h3>라이브러리</h3>
+                        <p>
+                            <img src="https://img.shields.io/badge/Ojdbc-F80000?style=for-the-badge&logo=oracle&logoColor=white">
+                        </p>
+                        <p>
+                            <img src="https://img.shields.io/badge/Lombok-E34F26?style=for-the-badge&logo=&logoColor=white">
+                        </p>
+                        <p>
+                            <img src="https://img.shields.io/badge/Jackson-0769AD?style=for-the-badge&logo=&logoColor=white">
+                        </p>
+
+                        <h1>살펴보기</h1>
+                        <h2>이미지</h2>
+                        <div class="slider-box"></div>
+                        
+                        
+                        <h2>구현기능</h2>
+                        <h3>공통</h3>
+                        <p>회원가입, 로그인</p>
+                        <p>게시판 작성, 삭제</p>
+                        <p>코멘트 작성</p>
+                        <p>프로필 이미지 파일 업로드</p>
+                        <p>스토어 아이템 등록</p>
+                        <p>Rest Control</p>
+                        <h3>Slate</h3>
+                        <p>동적 랜더링</p>
+                        
+                        <h3>Winter</h3>
+                        <p>오라클 연동</p>
+
+                        <h2>링크</h2>
+                        <h3>GitHub</h3>
+                        <p>
+                            <a target="_blank" href="">
+                                <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+                            </a>
+                        </p>
+                        <h3>발표 PPT</h3>
+                        <p>
+                            <a target="_blank" href="https://docs.google.com/presentation/d/1ZeOPq-6PRY6_joYS3ArO-okQF4NZ23CP/edit?usp=sharing&ouid=109390394369097049050&rtpof=true&sd=true">
+                                <img src="https://img.shields.io/badge/GoogleSlider-F80000?style=for-the-badge&logo=slides&logoColor=white">
+                            </a>
+                        </p>
+<!-- SLATE -->
+                        <h1>Slate</h1>
+                        <h2>다이어그램</h2>
+                        <h3>프로세스 플로우</h3>
+                        <div class="thing">
+                            <p>1. 인덱스 페이지에서 DOMContentLoaded 진입 합니다.</p>
+                            <p>2. DocEngine Run 실행 HTML PipeLine에서 사용자 정의 위젯 태그 확인 후,</p>
+                            <p>3. 위젯을 로드(HTML, CSS, JS)후 문서에 부착합니다.</p>
+                            <p>4. 사용자는 위젯 리소스를 확장하여 객체를 정의 및,</p>
+                            <p>5. Component를 부착하여 Slate 내에서 생산성 확장할 수 있습니다.</p>
+                        </div>
+                        <div class="gram">
+                            flowchart LR
+                            A[IndexPage] -->|DOMContentLoaded| B[DocEngine]
+                            B --> |Run| C[HtmlPipeLine]
+                            C --> |ResourceMatch| D[Widget]
+                            F[Widget] --> |Append HTML, CSS, JS| G[Rendering]
+                            H -->|WidgetResource| H[User Extends WidgetResource]
+                        </div>
+
+                        <h3>클래스 구조</h3>
+                        <div class="gram">
+                            classDiagram
+                            class DocEngine {
+                              +HTMLPipeLine htmlPipeLine
+                              +run()
+                            }
+                            class HTMLPipeLine {
+                              +Array widgetStore
+                              +connectHTML(attachElement)
+                              +nodeToResourceMatch()
+                              +getWidgetResource(widgetName, cb)
+                              +isDefindRuleCSS()
+                            }
+                        
+                            class Widget{
+                                +HTML html
+                                +WidgetResrouce WidgetResource
+                                +appendHTML()
+                                +appendCSS()
+                                +appendJS()
+                                +renderingHTML()
+                            }
+                        
+                            class WidgetResource{
+                                +Map components
+                                +findElement()
+                                +addComp(comp)
+                                +getComp(comp)
+                            }
+                        
+                            class Component{
+                                +WidgetResource parent
+                            }
+                        
+                            DocEngine  --> HTMLPipeLine : references
+                            Widget  <--> WidgetResource : references
+                            WidgetResource  <--> Component : references
+                        </div>
+                        <div class="gram">
+                            classDiagram
+                            Component <|-- DocEventHandler
+                            Component <|-- RestBinder
+                            Component <|-- EntityGenerator
+                            Component : +WidgetResource parent
+                            class DocEventHandler{
+                                +bindEvent(eventType, element) 
+                            }
+                            class RestBinder{
+                                +Map resourceStore
+                                +bindConfig(config) 
+                                +send(key, cb)
+                                +getInboundData(config, cb)
+                                +getPackerItems(config, packer)
+                            }
+                                class EntityGenerator{
+                                +Map resourceStore
+                                +makeElements(attachment, widgetKey, items) 
+                                +entitiyDelete(widgetKey, uIndex)
+                                +clearWidgets(widgetKey)
+                            }
+                        </div>
+
+                        <h2>HTMLPipeLine</h2>
+                        <div class="blockquote">
+                            <p>Document와 Slate의 연결성을 위한 매니저 클래스입니다.
+                                <br>위젯 리소스를 불러와 위젯을 생성 삭제 관리 합니다.
+                            </p>
+                        </div>
+
+                        
+                        <h3>nodeToResourceMatch</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>노드를 찾아내어 Widget을 생성합니다.</p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+            nodeToResourceMatch(){
+                for(let it of this._docNodeStore){
+                    const key = it[0];
+                    const value = it[1];
+                    for(let i = 0; i < value.length; ++i){
+                        this.getWidgetResource(key, (resource)=>{
+                            const widget = this.spawnWidget(resource.key, value[i], i);
+                            widget.rendering();
+                        });
+                    }
+                }
+            }
+                                </pre>
+                            </article>
+                        </div>
+
+                        <h3>getWidgetResource</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>리소스 비동기로 불러오며, 캐싱 이력 있다면 캐싱 처리 합니다.</p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+            getWidgetResource(widgetName, resultCB){
+                const slateMap = DocEngine.instance.slateMap;
+                const wname = widgetName.toLowerCase();
+        
+                if(this.isCashDocHtmlResource(wname, resultCB)) return;
+        
+                .
+                .
+                .
+        
+                Promise.all([pHTML, pCSS, pJS]).then((value) => {
+                    const promiseResult = {
+                        document: value[0],
+                        css: value[1],
+                        js: value[2]
+                    };
+        
+                    this.addDocHtmlResource(wname, promiseResult);
+                    resultCB(this._docHtmlResourceStore.get(wname));
+                });
+            }
+        
+            async asyncGetWidgetResource(widgetName){
+                const result = new Promise(resolve => {
+                    this.getWidgetResource(widgetName, (resource)=>{
+                        resolve(resource);
+                    });
+                });
+                return result;
+            }
+                                </pre>    
+                            </article>
+                        </div>
+ 
+                        <h2>Widget</h2>
+                        <div class="blockquote">
+                            <p>비동기로 불러온 HTML, CSS, JS 파일을 기반 Doucment와 부착되며,
+                                <br>이하 세 파일에 대한 정보를 보유하는 Slate 객체입니다.
+                            </p>
+                        </div>
+
+                        <h3>appendHTML</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>읽어온 HTML File 첫 번째 요소 내의 자식을 순환 및,</p>
+                                    <p>Widget에 매칭되도록 Class 이름 변경하고,</p>
+                                    <p>이로써 HTML내 Class 이름 중복을 회피하며 document에 부착합니다.</p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+            appendHTML(dhrResult, key){
+                // 읽어온 문서 첫번째 요소
+                .
+                .
+                .
+        
+                Util.sequenceTree(this._widgetHTML, (element) => {
+                    const makeName = key.concat('-' , element.className);
+                    element.className = makeName;
+                });
+            }
+                                </pre>
+                            </article>
+                        </div>
+
+                        <h3>appendCSS</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>CSS File을 읽어 정규식을 통해 Key Value 파싱</p>
+                                    <p>StyleSheet에 정의 된 적이 있다면 리턴하여 중복 정의 회피하며,</p>
+                                    <p>StyleSheet내의 Css declarations Insert Rule에 Widget 이름과 매칭하여 속성을 정의합니다.</p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+            appendCSS(dhrResult, key, htmlPipeLine){
+
+                if (htmlPipeLine.isDefindRuleCSS(key)) return;
+        
+                .
+                .
+                .
+        
+                for (let i = 0; i < tags.length; ++i) {
+                    const makeCName = '.'.concat( key, '-', tags[i].substring(1, tags[i].length -1) );
+                    const makeProperty = makeCName.concat(propertys[i]);
+                    document.styleSheets[0].insertRule(makeProperty);
+                }
+        
+                htmlPipeLine.updateDefindRuleCSS(key);
+            }
+                                </pre>
+                            </article>
+                        </div>
+
+                        <h3>appendJS</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>JS File을 읽어 해당 클래스 동적 할당 및 widgetResource로서 관리 합니다.</p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+            appendJS(dhrResult, key){
+                const moduel = dhrResult.dhr.js;
+                if(moduel && moduel.default != null){
+                    const classType = moduel.default;
+                    const   cwrd = {...WidgetResource.CWRD };
+                            cwrd.parnetWidget = this;
+                            cwrd.parnetKey = key;
+                    this._widgetResourceObj = new classType(cwrd);
+                }
+            }
+                                </pre>
+                            </article>
+                        </div>
+
+                        <h2>Widget Resource</h2>
+                        <div class="blockquote">
+                        <p>Widget이 불러온 JS는 WidgetResource Class로 확장됩니다.
+                            <br>WidgetResource는 다수의 컴포넌트를 부착해 생산성을 도움받을 수 있으며,
+                            <br>사용자로 인해 확장되어 Slate 내에서 제작된 위젯이 조작될 수 있도록 합니다.
+                        </p>
+                        </div>
+
+                        <h2>Component</h2>
+                        <div class="blockquote">
+                        <p>WidgetResource에 부착되며, Component는 특정 기능을 위임 담당하며,
+                            <br>사용자는 Component상속 받아 확장 기능을 추가합니다.
+                        </p>
+                        </div>
+
+                        <h2>사용자 위젯</h2>
+                        <h3>Board :: main-view </h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>WidgetResource를 상속받은 MainView widget
+                                        <br>Board App 시작 포인트 Widget 입니다.
+                                        <br>다수의 위젯과 통신하며, 다수의 컴포넌트가 부착되어 도움을 받을 수 있습니다.
+                                    </p>
+                                </div>
+                                <div class="thing">
+                                    <br>DocEventHandler로 부터 Scroll Event를 할당하여 스크롤 발생 시,
+                                    <br>RestBinder를 통해 서버로 요청을 보냅니다.
+                                    <br>다만 RestBinder Config 부터 PackingType을 Client로 정의하였기에,
+                                    <br>한 번의 요청에 다수의 JSon을 응답받아, 클라이언트가 다음 아이템을 파악하여,
+                                    <br>클라이언트가 서버에 요청하는 횟수를 최적화 합니다.
+                                    <br>이후, 다음 진입되는 Json Item들을 EntityGenerator가 받아   
+                                    <br>Json Item이 주입되는 Entity라 불리는 Widget들을 생성합니다.
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+            export default class MainView extends WidgetResource{
+                constructor(cwrd){
+                    super(cwrd);   
+                    .
+                    .
+                }
+            
+                rConstructor(){
+                    super.rConstructor();
+
+                    this._eventHandler = this.addComp(DocEventHandler);
+                    this._restBinder = this.addComp(RestBinder);
+                    this._generator = this.addComp(EntityGenerator);
+            
+                    const eh = this._eventHandler;
+                    const rb = this._restBinder;
+                    eh.bindEvent(DocEventHandler.EEvent.SCROLL, "container");
+                    eh.bindEvent(DocEventHandler.EEvent.MOUSE_ENTER, "frame");
+                    eh.bindEvent(DocEventHandler.EEvent.MOUSE_LEAVE, "frame");
+                    eh.bindEvent(DocEventHandler.EEvent.CLICK, postButton);
+                    rb.bindConfig( this.getNBoardConfig() );
+            
+                    this.preGenerateBoardView();
+                    this.refresh();
+                }
+
+
+                getNBoardConfig(){
+                    const   requestType = {...HTTP.RequestType };
+                            requestType.method = HTTP.ERequestMethod.GET;
+                            requestType.URL = "http://localhost:8081/boards";
+                            requestType.responseType = HTTP.EResponseType.JSON;
+            
+                    const   config = {...RestBinder.RestBinderConfig };
+                            config.key = nBoardHTTPKey;
+                            config.RequestType = requestType;
+                            config.itemSize = 9;
+                            config.packageLoc = RestBinder.ERBCPackageLoc.client;
+                            config.progressing = true;
+                            
+                    return config;
+                }
+
+                scroll(target, event){
+                    const pes = Util.getScrollPes(target)
+                    const div = 98.0;
+                    if(pes >= div){
+                        this.doSend();
+                    }
+                }
+
+                doSend(){
+                    this._restBinder.send(nBoardHTTPKey, (items)=>{
+                        this._generator.makeElements("container", nBoardWidgetKey, items);
+                    });
+                }
+                                </pre>
+                            </article>
+                        </div>
+<!-- SLATE END -->
+<!-- Winter -->
+                        <h1>Winter</h1>
+                        <h2>다이어그램</h2>
+                        <h3>프로세스 플로우</h3>
+                        <div class="thing">
+                            <p>1. App Config 기반 App을 가동하며, DataBase, Server 초기 설정을 실행 합니다.</p>
+                            <p>2. DataBase는 OracleDataSource를 준비하며 CheckTable Class를 통해,</p>
+                            <p>3. 테이블, 시퀀스를 생성 삭제 하여 테스트 및 개발 속도를 향상 시킵니다.</p>
+                            <p>4. Server는 HttpServer를 가동하며, App내의 Controller들을 불러와 진입점을 할당합니다.</p>
+                        </div>
+                        <div class="gram">
+                            flowchart LR
+                            A["App (AppConfig)"] -->|Run| B[DataBase]
+                            A["App (AppConfig)"] -->|Run| C[Server]
+                            B --> |createDataSource| D[OracleConnectionPoolDataSource]
+                            B --> |? isCheckTable| E[Create,Delete Table
+                            Create Sequence]
+                            C --> |loadControllers, start|F[HttpServer]
+                        </div>
+                        <div class="thing">
+                            <p>1. 클라이언트로 부터 Http 요청을 받으면, </p>
+                            <p>2. Java 모듈의 HttpHandler를 상속 받아 확장한 Controller의 handle이 호출됩니다.</p>
+                            <p>3. Routage요청 포인트에 의거 mappingMethod로 향하며 메소드 타입에 따라, 바디 데이터를 파싱 여부를 확인 합니다.</p>
+                            <p>4. 또한 사용자의 비즈니스 로직에 의거 Controller부터 전달된 리턴 타입을 처리 하기 위해 objectMappingResolver로 향합니다.</p>
+                            <p>5. HttpRequest의 헤더 요청 및 Controller의 반환 타입에 따라 각각의 처리를 진행하며 클라이언트에게 응답합니다.</p>
+                        </div>  
+                        <div class="gram">
+                            flowchart LR
+                            A[Client] -->|Http Request| B[HttpHandler]
+                            B --> |handle| C[Controller]
+                                                        
+                            D["setRoutage(''/boards'')"] --> |"GET" | E[mappingMethod]
+                            E --> |doGet| F[UserController]
+                            F --> |return| G[OMR]
+                            D["setRoutage(''/boards'')"] --> |"POST" | E1[mappingMethod] 
+                            E1 --> |doPost| E2[bodyParser]   
+                            E2 --> |payload| F1[UserController]
+                            F1 --> |return| G[OMR]
+                                                   
+                            H["objectMappingResolver(OMR)"] --> |"String(Static Resource)"|I[response]
+                            H["objectMappingResolver(OMR)"] --> |"Object(Json)"|I[response]
+                            H["objectMappingResolver(OMR)"] --> |"List(Jsons)"|I[response]
+                            H["objectMappingResolver(OMR)"] --> |"Blob"|I[response]
+                            H["objectMappingResolver(OMR)"] --> |"HttpResulter"|I[response]
+                            I -->|Http Response| J[Client]
+                        </div>
+                        <div class="thing">
+                            <p>DataBase로 부터 쿼리 요청 시 데이터 처리 후, 리플렉션을 통해 각 유형에 따라 Statement를 처리합니다.</p>
+                            <p>Binder 인터페이스의 Getter, Setter를 통해 변환 처리를 보조 받으며, 그에 준하는 객체로 변환 합니다.</p>
+                            <p>또한, 객체가 Response로 반환 될 때 Filter를 통해 필드 값을 숨겨 전달 할 수 있습니다.</p>
+
+                        </div>  
+                        <div class="gram">
+                            flowchart LR
+                            A[sqlQuery] -->|Connection,
+                            PreparedStatement | B[matchParam]
+                            B --> |Reflection Object| C[Binder]
+                            C --> |Setter, Getter, Fillter| A
+                        </div>
+                        <h3>클래스 구조</h3>
+                        <div class="gram">
+                            classDiagram
+                            AppConfig <|-- BoardApp
+                            AppConfig : +int PORT
+                            AppConfig : +String DB_URL
+                            AppConfig : +appControllers()
+                            AppConfig : +appSequence(String tableName)
+                            AppConfig : +appTable(String tableName)
+                            
+                            class App{
+                                +AppConfig appConfig;
+                                +Server server;
+                                +DataBase dataBase;
+                                +Common common;
+                            
+                                +getInstance()
+                                +run()
+                            }
+                            
+                            class Server{
+                                +HttpServer httpServer
+                                +inIt()
+                                +run()
+                                +loadControllers(AppConfig appConfig)
+                            }
+                            
+                            class DataBase{
+                                +CheckTable CheckTable
+                                +OracleConnectionPoolDataSource ocpd
+                                +connection()
+                                +createDataSource()
+
+                                +sqlQuery(String sql, Class type)
+                                +sqlQuery(String sql, Class type, Object... params)
+                                +matchParam(PreparedStatement pstmt, int index, Object param)
+                                +getObject(Class type, ResultSet item)
+                            }
+
+                            class CheckTable{
+                                +createTable()
+                                +deleteTable()
+                                +tableExists()
+                            }
+
+                            App  --> AppConfig : references
+                            App  --> Server : references
+                            App --> DataBase : references
+
+                            Server --> HttpServer : references
+                            DataBase --> CheckTable : references
+                        </div>
+
+                        <h2>Controller</h2>
+                        <div class="blockquote">
+                            <p>공통 로직을 상단에 올려, 프로세스 플로우를 숨깁니다.
+                                <br>사용자는 비즈니스 로직에만 집중할 수 있습니다.
+                            </p>
+                        </div>
+
+                        <h3>UserGetController</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>Get 인터페이스를 통해 doGet이 호출됩니다.
+                                        <br>"/users/{userId}" 에 기반하는 userId를 기반으로,
+                                        <br>OJdbc LowLevel Connection을 자동화한 sqlQuery를 통해 객체 자체를 반환받습니다.
+                                        <br>리턴 타입에 의거 objectMappingResolver를 통해 Json타입으로 클라이언트에게 응답하며,
+                                        <br>Filter를 통해 seq, passWord, mdate등의 필드를 제거하여 전달합니다.
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+                public class UserGetController extends Controller implements Get {
+                    @Override
+                    public ControllerProperties getProperties() {
+                        return new ControllerProperties()
+                                .setRoutage("/user/");
+                    }
+                
+                    @Override
+                    public User doGet(HttpExchange exchange) {
+                        PathVariable pathVariable = pathVariable(exchange);
+                        String uuid = pathVariable.value.get(0);
+                        String sql = "SELECT * FROM app_user WHERE uuid = ?";
+                        List<> user = db.sqlQuery(sql, User.class, uuid);
+                        return user.get(0);
+                    }
+                    
+                }
+                                </pre>
+                            </article>
+                        </div>
+
+                        <h3>UserLoginController</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>Post 인터페이스를 통해 doPost가 호출됩니다.
+                                        <br>또한, 파싱된 바디 데이터가 jsonObject로 넘어옵니다.
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+                public class UserLoginController extends Controller implements Post {
+                    @Override
+                    public ControllerProperties getProperties() {
+                        return new ControllerProperties()
+                                .setRoutage("/login");
+                    }
+                
+                    @Override
+                    public HttpResulter doPost(HttpExchange exchange, JSONObject jsonObject) {
+                        User user = cast(jsonObject, User.class);
+                        User findUser = findUser(user);
+                
+                        if(findUser != null){
+                            if( findUser.getPassWord().equals(user.getPassWord()) ){
+                                return new HttpResulter()
+                                        .setFilterData(findUser)
+                                        .setStatusCode(200)
+                                        .setMsg("로그인 성공");
+                            }
+                        }
+                
+                        return new HttpResulter()
+                                .setStatusCode(400)
+                                .setMsg("로그인 실패");
+                    }
+                
+                
+                    private User findUser(User insertUser){
+                        String sql = "SELECT * FROM app_user WHERE id = ?";
+                        List<User> users = db.sqlQuery(sql, User.class, insertUser.getId());
+                        if(!users.isEmpty()){
+                            return users.get(0);
+                        }
+                        return null;
+                    }
+                }
+                                </pre>
+                            </article>
+                        </div>
+<!-- WINTER END -->                   
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="flush-btn">
+                        <p>프로젝트</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

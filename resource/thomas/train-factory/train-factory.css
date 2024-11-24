@@ -1,0 +1,55 @@
+.frame{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.train-container{
+    width: 100%;
+    height: 650px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: orange aliceblue;
+}
+
+.input-box-wrap{
+    width: 100%;
+    height: 75px;
+}
+
+.input-box{
+    min-height: 75px;
+    width: calc(100% - 125px);
+    height: 75px ;
+    font-size: 20px;
+    border: 0;
+    outline: none;
+    margin-left: 15px;
+    background-color: aliceblue;
+    transition: box-shadow 0.3s;
+}
+
+.input-box:hover{
+    box-shadow: 0 7px 15px rgba(0,0,0,0.09), 0 10px 10px rgba(0,0,0,0.09);
+}
+
+.send-button{
+    min-height: 75px;
+    display: grid;
+    align-items: center;
+    width: 100px;
+    height: 100%;
+    float: right;
+    cursor: pointer;
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+}
+
+.send-button-p{
+    text-align: center;
+    font-size: 18px;
+    font-weight : bold;
+    margin: 0px;
+}

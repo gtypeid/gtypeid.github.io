@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="profile.css">
+    <script type="module" src="profile.js"></script>
+    <title>profile</title>
+</head>
+<body>
+    <div class="frame">
+        <div class="blind">
+            <div class="profile-box">
+                <div class="top">
+                    <div class="content">
+                        <div class="blockquote" style="margin-top: 100px; margin-bottom: 100px;">
+                            <p>프로젝트의 간단한 소개, 이미지 살펴보기, 핵심 구조, 간략한 코드 언급 순으로 진행 됩니다.</p>
+                            <p>현재 페이지는 팀 프로젝트 StudyClub및 </p>
+                            <p>담당기능 WebRTC, Signaling Server, Client 디테일 뷰 입니다.</p>
+                            <p style="font-size: 1.8em; font-style: normal;">😊</p>
+                        </div>
+
+                        <h1>개요</h1>
+                        <h2>프로젝트 소개</h2>
+                        <h3>StudyClub</h3>
+                        <div class="thing">
+                            <p>팀으로서 진행된 프로젝트입니다.
+                                <br>스터디 사용자들을 모집하고 다른 서비스를 이용하러 가는 것이 아닌, 
+                                <br>현 서비스 내에서 사용자 모집 및 기능성 커뮤니티를 하나의 어플리케이션으로 확장하고 싶었습니다.
+                            </p>
+                        </div>
+
+                        <h3>WebRTC</h3>
+                        <div class="thing">
+                            <p>WebRTC라는 기술이 흥미로워 팀 프로젝트로 합류하였습니다.
+                                <br>Web에서 N:N 다수의 사용자들과 화상 통화를 진행하거나,
+                                <br>연결된 P2P 데이터 채널을 통해 데이터를 교환하여 채팅 및 공용 보드의 낙서나 사진을 동기화합니다.
+                                <br>WebRTC 연결 과정을 NodeJs, Socket이 아닌 Http 메시지로 핸들링하고 싶었으며,
+                                <br>이벤트 지향성으로 확장성을 고려하여 시그널링 서버 및 클라이언를 맡았습니다.
+                            </p>
+                        </div>
+
+                        <h2>사용기술</h2>
+                        <p>
+                            <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
+                        </p>
+                        <p>
+                            <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+                        </p>
+                        </p>
+                        <p>
+                            <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
+                        </p>
+
+                        <h3>라이브러리</h3>
+                        <p>
+                            <img src="https://img.shields.io/badge/WebRTC-4FC08D?style=for-the-badge&logo=webrtc&logoColor=white">
+                        </p>
+                    
+                        <h1>살펴보기</h1>
+                        <h2>이미지</h2>
+                        <div class="slider-box"></div>  
+
+                        <h2>구현기능</h2>
+                        <h3>StudyClub</h3>
+                        <p>회원가입, 로그인</p>
+                        <p>게시판 CRUD</p>
+                        <p>코멘트 작성</p>
+                        <p>Oauth</p>
+                        <p>WebRTC 1:1</p>
+
+                        <h3>WebRTC</h3>
+                        <p>WebRTC N:N</p>
+                        <p>공용 보드</p>
+                        <p>채팅</p>
+
+                        <h2>링크</h2>
+                        <h3>GitHub</h3>
+                        <p>
+                            <a target="_blank" href="">
+                                <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+                            </a>
+                        </p>
+                        <h3>발표 PPT</h3>
+                        <p>
+                            <a target="_blank" href="https://docs.google.com/presentation/d/1X8NiNeOPEBSMGp2JbWUztfjYr_Dzy9Wv/edit?usp=sharing&ouid=109390394369097049050&rtpof=true&sd=true">
+                                <img src="https://img.shields.io/badge/GoogleSlider-F80000?style=for-the-badge&logo=slides&logoColor=white">
+                            </a>
+                        </p>
+<!-- WebRTC -->
+                        <h1>WebRTC</h1>
+                        <h2>다이어그램</h2>
+                        <h3>프로세스 플로우</h3>
+                        <div class="thing">
+                            <p>1. 발신자가 Offer 생성 및 로컬 정보 설정 시 발신자의 네트워크 후보들이 SDP인증서에 등록됩니다.</p>
+                            <p>2. 수신자는 발신자의 Offer를 수신하고, 원격 정보 설정 이후 Offer기반 Answer응답을 생성합니다.</p>
+                            <p>3. 이후 수신자는 마찬가지로 로컬 정보 설정 시 수신자의 네트워크 후보들이 SDP인증서에 등록되며,</p>
+                            <p>4. 이하 발신자가 SDP 인증서가 담긴 Answer를 응답받고 원격 정보 설정 시,</p>
+                            <p>5. 둘은 Connected 상태로 전환 되며, P2P 연결 상태가 됩니다.</p>
+                        </div>
+                        <div class="gram">
+                            flowchart LR
+                            A[발신자] -->|"Offer
+                            LocalDescription,
+                            Icecandidate (SDP)"| B[수신자]
+                            
+                            B[수신자] --> |"RemoteDescription,
+                            Answer,
+                            LocalDescription,
+                            Icecandidate (SDP)"| C[발신자]
+                            
+                            C[발신자] --> |"RemoteDescription"| D[연결]
+                        </div>
+<!-- WebRTC END -->
+<!-- Signaling Server -->
+                        <h1>Signaling Server</h1>
+                        <h2>다이어그램</h2>
+                        <h3>프로세스 플로우</h3>
+                        <div class="thing">
+                            <p>1. 클라이언트는 시그널링 서버의 API를 통해 방을 생성하거나, 접속할 수 있습니다.</p>
+                            <p>2. 방에 관한 정보를 수신받음과 동시에 클라이언트는 서버의 SSEEvent에 Bind하여 EventStream을 활성화하게 되는데,</p>
+                            <p>3. 이후 클라이언트는 이벤트를 발 수신 하게 됩니다.</p>
+                            <p>4. 서버는 이벤트들을 수신하여 EventStream으로 전달합니다. </p>
+                            <p>5. Stream내의 Event들은 각각의 EventCapture가 처리한 결과를 클라이언트들에게 전달합니다.</p>
+                        </div>
+                        <div class="gram">
+                            flowchart LR
+                            A[Client] -->|"API
+                            /create-room
+                            /join-room/{room-id}"| B[Server]
+                            B[Server] --> |"RoomInfoProfile"| C[Client]
+                            C[Client] -->|SSEEventBind| D[EventStream]
+                            
+                            A1[Client] --> |"Event
+                            Join, Offer, Answer"| B1[Server]
+                            B1[Server] -->|Handler| C1[SSEService]
+                            C1[SSEService] --> |EventStream| D1[EventCapture]
+                            D1[EventCapture] --> E1[Clients]
+                            D1[EventCapture] --> E1[Clients]
+                            D1[EventCapture] --> E1[Clients]
+                        </div>
+                        <h2>SSEService</h2>
+                        <div class="blockquote">
+                            <p>SSEController를 통해 클라이언트에 SSEEvent 스트림을 등록합니다.
+                                <br>EventCapture를 통한 결과를 서버에서 클라이언트에게 메시지를 발송할 수 있게 됩니다.
+                            </p>
+                        </div>
+
+                        <h3>autowire</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>
+                                        EventCapture 구현체들을 의존 주입합니다.
+                                    </p>
+                                </div>
+                                <div class="thing">
+                                    <p>
+                                        OfferEvent구현체는 Offer, AnswerEvent구현체는 Answer.
+                                        <br>이벤트와 매칭 됩니다. 사용자에 의거 EventCapture 클래스가 확장 되어도,
+                                        <br>기존 코드를 수정 하지 않도록 Spring 의존 주입을 활용해 보았습니다.
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+            @Service
+            public class SSEService {
+
+                private Map< String, Map< String, SseEmitter > > roomClientEmitters 
+                    = new ConcurrentHashMap<>();
+                private Map< String, EventCapture > eventCaptureStore 
+                    = new ConcurrentHashMap<>();
+
+                @Autowired
+                SSEService(List< EventCapture > eventCaptures){
+                    eventCaptures.forEach(ec -> eventCaptureStore.put(getEventType(ec), ec));
+                }
+
+                private String getEventType(EventCapture eventCapture){
+                    String simpleName = eventCapture.getClass().getSimpleName().toLowerCase();
+                    int index = simpleName.indexOf("event");
+                    return simpleName.substring(0, index);
+                }
+            }
+                                </pre>
+                                <pre class="prettyprint">
+                                    <br>
+            @Component
+            public class OfferEvent implements EventCapture{
+                .
+                .
+                .
+            }
+
+            @Component
+            public class AnswerEvent implements EventCapture{
+                .
+                .
+                .
+            }
+                                </pre>
+                            </article>
+                        </div>
+                        <h3>publish</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>
+                                        클라이언트로부터 요청받은 HandleEvent를 발행합니다.
+                                        <br>클라이언트들을 순회 하며, EventCapture가 적합한 Event를 처리하여,
+                                        <br>클라이언트들에게 전달합니다.
+                                    </p>
+                                </div>
+                                <div class="thing">
+                                    <p>
+                                        책임 및 처리를 EventCapture로 위임시켜,
+                                        <br>이벤트 확장에도 코드 수정이 없도록 디자인해보았습니다.
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+            public void publish(HandleEvent handleEvent){
+                .
+                .
+                Map<String, SseEmitter> clients = roomClientEmitters.get(roomUuid);
+                clients.forEach( (targetClient, emitter) ->{
+                    doPublish(targetClient, handleEvent, emitter, clients);
+                });
+            }
+        
+            private void doPublish(String targetClient, HandleEvent handleEvent, 
+                SseEmitter emitter, Map< String, SseEmitter > clients){
+
+                String eventType = handleEvent.getEventType();
+        
+                if( eventCaptureStore.containsKey(eventType) ){
+                    EventCapture eventCapture = eventCaptureStore.get(eventType);
+                    eventCapture.doAction(targetClient, handleEvent, (data) ->{
+                        try {
+                            emitter.send(data, MediaType.APPLICATION_JSON);
+                        } catch (IOException e) {
+                            .
+                            .
+                        }
+                    });
+                }
+            }
+                            </article>
+                        </div>
+                        <h2>EventCapture</h2>
+                        <div class="blockquote">
+                            <p>Event를 적합하게 처리할 인터페이스입니다.
+                                <br>적합 구현체가 그 역할을 구현합니다.
+                            </p>
+                        </div>
+
+                        <h3>JoinEvent</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>
+                                        EventCapture 구현한 JoinEvent입니다.
+                                        <br>Join 발생 시 요청 클라이언트를 제외한 모든 클라이언트에게 메시지를 발송합니다.
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+            @Component
+            public class JoinEvent implements EventCapture{
+            
+                private final RoomService roomService;
+            
+                @Autowired
+                public JoinEvent(RoomService roomService){
+                    this.roomService = roomService;
+                }
+            
+                @Override
+                public void doAction(String targetClient, HandleEvent handleEvent, 
+                    Consumer< RoomStateEventHandler > consumer) {
+            
+                    if(!targetClient.equals(handleEvent.getClientUuid())){
+
+                        HandleEvent data = new HandleEvent(handleEvent);
+                        Room room = 
+                            roomService.getRoomStore().get( handleEvent.getRoomUuid() );
+            
+                        RoomStateEventHandler roomStateEventHandler = 
+                            new RoomStateEventHandler(room, data);
+                        consumer.accept(roomStateEventHandler);
+                    }
+                }
+            }
+                                </pre>
+                            </article>
+                        </div>
+<!-- Signaling Server END -->
+<!-- WebRTC Client -->
+                        <h1>WebRTC Client</h1>
+                        <h2>다이어그램</h2>
+                        <h3>프로세스 플로우</h3>
+                        <div class="thing">
+                            <p>1. 서버로부터 Event를 받으면 BeatSync를 통해 방에 대한 정보 및 버전을 업데이트합니다.</p>
+                            <p>2. 해당 이벤트를 MsgQueue Pipe에 발행합니다.</p>
+                            <p>3. Pipe는 PipeChain으로 부터 진입 시 필터를 거치고 발행 시 특정 로직을 처리하며,</p>
+                            <p>4. 처리 결과가 시그널링 서버로 전송됩니다.</p>
+                        </div>
+                        <div class="gram">
+                            flowchart LR
+                            A[Server] -->|"Event
+                            SSE Stream"| B[Client]
+                            B[Client] --> |"BeatSync
+                            RoomInfo Version"| C["Pipe (MSG Queue)"]
+                            C["Pipe (MSG Queue)"]
+                            
+                            D[Pipe] --> |Filter| E[PipeChain]
+                            E[PipeChain] --> |Consume|F[EventRequest]
+                            F[EventRequest] --> |HttpRequest| G[Server]
+                            
+                        </div>
+
+                        <h3>클래스 구조</h3>
+                        <div class="gram">
+                        classDiagram
+                        class RTCClient {
+                            +Room room;
+                            +CamClient camClient;
+                            +ClientSyncer clientSyncer;
+                            +Pipe pipe;
+                            +RTCManager rtcManager;
+                            +createRoom()
+                            +joinRoom(uuid)
+                        }
+
+                        class ClientSyncer {
+                            +EventSource sseEvent
+                            +SyncBoard syncBoard;
+                            +SyncChat syncChat;
+                            +sseBind()
+                            +beatSync(handleEvent, rsRoom)
+                        }
+
+                        class Pipe{
+                            +PipeChain pipeChain
+                            +enqueue(data)
+                            +dequeue()
+                            +publish(type)
+                        }
+
+                        class RTCManager {
+                            +Map rtcStore
+                            +spawnCaller(data)
+                            +spawReceiver(data)
+                            +connect(data)
+                        }
+
+                        class PipeChain {
+                            +Funtions rtcStableCallbacks
+                            +enqueueFilter(pipeItems, data)
+                            +rtcStableFilter(type, cb)
+                            +rtcStableSend(type, data)
+                        }
+
+                        RTCClient  --> ClientSyncer : references
+                        RTCClient  --> Pipe : references
+                        RTCClient  --> RTCManager : references
+                        Pipe --> PipeChain : references
+                        ClientSyncer --> SyncBoard : references
+                        ClientSyncer --> SyncChat : references
+                        </div>
+
+                        <h2>ClientSyncer</h2>
+                        <div class="blockquote">
+                            <p>서버와 이벤트를 송수신하여 클라이언트들과 동기화를 처리하는 클래스입니다.
+                                <br>또한 Web RTC가 연결되어 P2P상태에 돌입 되었을 때에도 DataChanell을 통해 동기성을 처리합니다.
+                            </p>
+                        </div>
+
+                        <h3>sseBind</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>Event Stream 콜백 및 DataChanell 콜백을 설정 합니다.
+                                        <br>Event는 비트 싱크로 향하며,
+                                        <br>P2P DataChanell Msg SyncBoard 및 SyncChat이 사용합니다. 
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+            sseBind(rs){
+                .
+                .
+                .
+
+                this._eventSource = new EventSource(path);
+                this._eventSource.onmessage = (e) =>{
+                    const roomStateEventHandler = JSON.parse(e.data);
+                    this.heartbeatSyncStatus(roomStateEventHandler.handleEvent, roomStateEventHandler.room);
+                }
+        
+                this._rtcManager.msgReceiver = (event) =>{
+                    const receivedBuffer = event.data;
+                    const receivedString = new TextDecoder().decode(receivedBuffer);
+                    const receivedObj = JSON.parse(receivedString);
+                    this._SyncBoard.receive(receivedObj);
+                    this._SyncChat.receive(receivedObj);
+                }
+
+            }
+                                </pre>
+                            </article>
+                        </div>
+
+                        <h3>heartbeatSyncStatus</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>서버의 룸 정보 및 이벤트에 의거 적합한 이벤트를 Pipe로 발행합니다.</p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+            heartbeatSyncStatus(handleEvent, rsRoom){
+                .
+                .
+                .
+                if(room.lastModified < rsRoom.lastModified){
+        
+                    if(eventType === "join"){
+                        this.syncJoin(rsRoom);
+                    }
+        
+                    this._rtcClient.updateBeatSync(rsRoom);
+                }
+                else if(room.lastModified === rsRoom.lastModified){
+                    if(eventType === "offer"){
+                        this.syncHandleOffer(handleEvent)
+                    }
+        
+                    if(eventType === "answer"){
+                        this.syncHandleAnswer(handleEvent)
+                    }
+                }
+        
+            }
+                                </pre>   
+                                <pre class="prettyprint">
+                                    <br>
+            syncJoin(rsRoom){
+                .
+                .
+                for(let it of Object.values(rsRoom.camClients)){
+                    const target = it;
+                    if(camIndex < target.index){
+                        const data = { type : "offer", target : target.clientUuid, sdp : ""};
+                        pipe.enqueue(data);
+                    }
+                }
+                pipe.publish("offer");
+            }
+                                </pre>     
+                            </article>
+                        </div>
+
+                        <h2>RTCClient</h2>
+                        <div class="blockquote">
+                            <p>RTC Client의 진입점 및 여러 객체를 관리하는 클래스입니다.
+                                <br>파이프라인을 정의하기도 합니다.
+                            </p>
+                        </div>
+
+                        <h3>preCreatePipeLine</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>RTC Manager에 발신자 혹은 수신자를 요청하거나,
+                                        <br>이벤트 파이프 라인을 파이프 체인으로부터 구축합니다.
+                                        <br>필터를 통해 진입 여부 콜백 정의하거나,
+                                        <br>발행시 처리해야 할 로직을 정의하고 서버로 이벤트를 발행합니다.
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+            async preCreatePipeLine(){
+                .
+                .
+                pipeChain.setRtcStableFilter("offer", (data)=>{
+                    return !this._rtcManager.hasRtc(data);
+                });
+        
+                pipeChain.setRtcStableSend("offer", async (data)=>{
+                    const rtcCaller = await this._rtcManager.spawnCaller(data);
+                    .
+                    .
+                    .
+                    const handleEvent = new HandleEvent()
+                        .spawn("offer", roomUuid, clientUuid, targetUuid, offer);
+        
+                    const eventType = "offer";
+                    this._server.hanlder( handleEvent );
+                });
+            }
+                                </pre>
+                            </article>
+                        </div>
+
+                        <h2>RTCManager</h2>
+                        <div class="blockquote">
+                            <p>EventStream 및 Pipe로 부터 발행되는 콜백으로 인한 상태 변화에,
+                                <br>RTC 객체 상태를 전환시키며 RTC Connect Flow를 컨트롤 하는 클래스입니다.  
+                            </p>
+                        </div>
+
+                        <h3>spawnCaller</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>발신자를 생성합니다. 상태를 소유하고 있는 RTC 객체를 할당하며,
+                                        <br>WebRTC P2P DataChannel, 혹은 WebRTC 콜백 등을 정의합니다.
+                                        <br>SDP 인증서 및 Video Element를 관리합니다.
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+
+            async spawnCaller(data){
+                .
+                .
+                if(!hasKey){
+                    const rtc = new RTC(target);
+                    typeMap.set(target, rtc);
+        
+                    const result = await rtc.changeStatus( RTC.status.spawnCaller, async ()=>{
+                        rtc.pc = new RTCPeerConnection();
+                        rtc.dc = rtc.pc.createDataChannel("channel");
+                        rtc.dc.onopen = (event) => {
+                            this._connector(event);
+                        };
+
+                        rtc.dc.onmessage = (event) => {
+                            this._msgReceiver(event);
+                        };
+
+                        const iceSdpPromise = new Promise(resolve => {
+                            rtc.pc.onicecandidate = (event) => {
+                                if (rtc.pc && rtc.pc.localDescription) {
+                                    rtc.iceSDP = JSON.stringify(rtc.pc.localDescription);
+                                    resolve(rtc.iceSDP);
+                                }
+                            };
+                        });
+        
+                        rtc.pc.ontrack = ( event ) => {
+                            rtc.spawnRemoteVideo(event);
+                        }
+        
+                        const offer = await rtc.pc.createOffer();
+                        await rtc.pc.setLocalDescription(offer);
+                        await iceSdpPromise;
+                        return typeMap.get(target);
+                    });
+        
+                    return result;
+                }
+        
+                return typeMap.get(target);
+            }
+                                </pre>
+                            </article>
+                        </div>
+
+                        <h2>SyncBoard</h2>
+                        <div class="blockquote">
+                            <p>DataChanell을 통해 사용자들의 송수신된 데이터를 기반 보드를 동기화합니다.
+                                <br>메인 캔버스 뒤에 버퍼 캔버스를 두 개를 추가로 배치하여,
+                                <br>반응성 및 객체 관리를 향상시켰습니다.
+                            </p>
+                        </div>
+
+                        <h3>receive</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>수신받은 메타 데이터를 확인하여 보드를 지우거나,
+                                        <br>라인 및 커서 및 이미지를 그려냅니다.
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+
+                receive(data){
+                    const { owner, msg, type} = data;
+            
+                    if(type === "board"){
+                        const drawData = JSON.parse(msg);
+                        this.drawing(owner, drawData.style, drawData.x, drawData.y);
+                    }
+                    else if(type === "board-img"){
+                        const imgData = JSON.parse(msg);
+                        const img = new Image();
+                        img.src = imgData.basebuffer;
+                        img.onload = ()=>{
+                            const {x, y, sizeX, sizeY } = imgData.imgstyle;
+                            this._bfCtx.drawImage(img, x, y, sizeX, sizeY);
+                            this._bfCtx.drawImage(this._lineCanvas, 0, 0);
+                            this._ctx.drawImage(this._bufferCanvas, 0, 0);
+                        }   
+                    }
+                    else if(type === "board-system"){
+                        if(msg === "eraser"){
+                            this.eraser();
+                        }
+                    }
+                }
+                                </pre>
+                            </article>
+                        </div>
+
+<!-- WebRTC Client END-->
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="flush-btn">
+                        <p>프로젝트</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+
+.frame{
+    height: 100%;
+}
+
+.container{
+    text-align: left;
+    direction: rtl;
+    margin-left: 15px;
+    height: 100%;
+    overflow-y: scroll;
+}

@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="profile.css">
+    <script type="module" src="profile.js"></script>
+    <title>profile</title>
+</head>
+<body>
+    <div class="frame">
+        <div class="blind">
+            <div class="profile-box">
+                <div class="top">
+                    <div class="content">
+                        <div class="blockquote" style="margin-top: 100px; margin-bottom: 100px;">
+                            <p>프로젝트의 간단한 소개, 이미지 살펴보기, 핵심 구조, 간략한 코드 언급 순으로 진행 됩니다.</p>
+                            <p>현재 페이지는 팀 프로젝트 Tetrapod의 </p>
+                            <p>CommonModule, Metrics 디테일 뷰 입니다.</p>
+                            <p style="font-size: 1.8em; font-style: normal;">😊</p>
+                        </div>
+
+                        <h1>개요</h1>
+                        <h2>프로젝트 소개</h2>
+                        <h3>Tetrapod</h3>
+                        <div class="thing">
+                            <p>마이크로 서비스 환경을 고려한 모듈 및 분산처리에 접근하고자  
+                                <br>같은 방향성을 가진 팀원끼리 모여 시작하게 된 프로젝트입니다.
+                            </p>
+                        </div>
+
+                        <h3>CommonModule</h3>
+                        <div class="thing">
+                            <p>마이크로 서비스라는 접근에 책임 및 역할을 모듈에 위임하여,
+                                <br>서비스 서버 간의 비즈니스 로직의 높은 결합성을 느슨한 결합으로 시도해보았습니다.
+                                <br>API요청을 통해 대상 서버와 체인을 연결하고 적합한 데이터 유형 체크 및
+                                <br>체인 어뎁터 분기, 로드밸런싱, 서버 상태 체크, 전역적 ID생성기 등의
+                                <br>Gradle Java Spring Boot프로젝트 내의 공통 모듈로서 제작해보았습니다.
+                            </p>
+                        </div>
+
+                        <h3>Metrics</h3>
+                        <div class="thing">
+                            <p>Spring 공부 중 추상적 설계에 대해 알게 되었고,
+                                <br>추상화된 프로세스를 진행하는 플로우라는 구조를 통해 로직이 메인 루프가 아닌,
+                                <br>사용자가 확장한 코드 덩어리를 원하는 순서에 집어넣어 유연성을 확보한 Java Swing 프로젝트입니다.
+                                <br>프로세스 흐름을 사용자가 조작하기에 이전 행위로 되돌아가거나, 다시 복구할 수 있는 틀을 가지고 있으며,
+                                <br>그 틀 안에 사용자가 정의된 코드 덩어리를 유연하게 집어넣어보았습니다.
+                                <br>멀티 플레이어가 주사위를 던져 목적지에 도달하는 동기화 시뮬레이션 혹은 
+                                <br>Http 요청, 응답을 추적 시각화할 수 있는 프로그램으로서 확장해보았습니다.
+                            </p>
+                        </div>
+
+
+
+
+                        <h2>사용기술</h2>
+                        <p>
+                            <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
+                        </p>
+                        <p>
+                            <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+                        </p>
+                        </p>
+                        <p>
+                            <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
+                        </p>
+
+                        <h1>살펴보기</h1>
+                        <h2>이미지</h2>
+                        <h3>Tetrapod</h3>
+                        <div class="slider-box"></div>
+
+                        <h2>링크</h2>
+                        <h3>GitHub</h3>
+                        <p>
+                            <a target="_blank" href="">
+                                <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+                            </a>
+                        </p>
+                        <h3>발표 PPT</h3>
+                        <p>
+                            <a target="_blank" href="https://docs.google.com/presentation/d/1-aF2Z8AIoVJXReIrFgvFs0JuYj2NdGVTvfx_jvCfH5A/edit?usp=sharing">
+                                <img src="https://img.shields.io/badge/GoogleSlider-F80000?style=for-the-badge&logo=slides&logoColor=white">
+                            </a>
+                        </p>
+<!-- CommonModule -->
+                        <h1>CommonModule</h1>
+                        <h2>다이어그램</h2>
+                        <h3>프로세스 플로우</h3>
+                        <div class="thing">
+                            <p>1. 어플리케이션이 실행 될 때 jar로 받은 실행 인자들을 ArgsParser로 파싱하여 공통 모듈 설정을 정의합니다.</p> 
+                            <p>2. 클라이언트는 API /chain/{target} 호출을 통해 대상 서버의 REST API 엔드포인트들을 동적으로 조회하고,</p> 
+                            <p>3. 대상 서버는 RequestMappingHandlerMapping을 통해 반환 타입 및 메타 데이터를<br>MappingInfoAPI 객체로서 클라이언트에게 반환합니다.</p> 
+                            <p>4. 반환된 메타데이터를 통해 클라이언트는 대상 서버의 API들을 확인할 수 있게 되며 이후 서버 체인 상태로 변환 합니다.</p> 
+                        </div>
+                        <div class="gram">
+                            flowchart LR
+                            A[SpringApplication] --> |ApplicationRunner|B[ArgsParser]
+                            B[ArgsParser] --> |SetCTX|C[Common Module]
+                            
+                            D[Client] --> |"api/chain/{target}"|E[Server]
+                            E[Server] --> |RequestMappingHandlerMapping| F[REST API,
+                            MappingInfoAPI]
+                            --> D[Client] --> G[Server Chain TRUE]
+                        </div>
+
+                        <div class="thing">
+                            <p>5. 클라이언트는 이후 APIFilter를 통해 /api path제외 요청들을 RequestBodyWrapper <br>ResponseBodyWrapper로서 바디 데이터 스트림을 감싸며</p>
+                            <p>6. 이후 필터를 넘어간 요청은 ServerChainService를 통해 게이트로 진입</p>
+                            <p>7. 게이트로 진입된 요청은 APIChecker를 통해 IdGenerator를 통해 ID를 부여받습니다.</p>
+                            <p style="color: green;">(None, Sequence, SnowFlake 기존 아이디 계승, 값 증가, 스노우 플레이크 등)</p>
+                            <p>8. 해당 요청이 유효한 요청 및 데이터인지 ValidApi메소드 MappingInfoAPI 객체와 비교합니다.</p>
+                        </div>
+                        <div class="gram">
+                            flowchart LR
+                            A[API Filter] --> B[RequestBodyWrapper, ResponseBodyWrapper] 
+                            --> C[ChainService,
+                            Gate] 
+                            --> D[APIChecker,
+                            IdGenerator]
+                            --> E[
+                            ValidApi,
+                            MappingInfoAPI]
+                        </div>
+
+                        <div class="thing">
+                            <p>9. 적합하다면 API /chain/{target} 요청시 설정된 ChainContext를 통해 체인 어댑터들을 확인하고,</p>
+                            <p style="color: green;">(HTTP Header Language 언어 비교 등)</p>
+                            <p>10. 로드 밸런싱 모듈에 진입 BalancingContext에 의거 설정된 밸런싱으로 분기합니다.</p>
+                            <p style="color: green;">(Random, Roundrobin, Sharding 랜덤, 순차적, 키 값에 매칭 등)</p>
+                            <p>11. 이후 대상 서버의 API /status 를 요청 서버가 정상적인 상태가 아니라면 다시 게이트로 진입하고,</p>
+                            <p>12. 유효한 서버라면 정상적으로 게이트를 나가게 됩니다.</p>
+                        </div>
+                        <div class="gram">
+                            flowchart LR
+                            E1[
+                            ValidApi,
+                            MappingInfoAPI]
+                            --> F[ChainContext,
+                            matchChainAdapter]
+                            --> G[LoadBalancer]
+                            --> H[StatusCheckerModule] 
+                            --> |api/status|I[TargetServer] 
+                            --> |Response OK|H --> |GateOut| J[GateOut]
+                            I[TargetServer]-->|ERROR|C1[ChainService,
+                            Gate]
+                        </div>
+
+                        <div class="thing">
+                            <p>13. 스프링내의 인터셉터를 통해 공통 모듈을 의존하는 서버들은,</p>
+                            <p>14. 요청 및 응답이 MetricStream으로 향하게 되고</p>
+                            <p>15. FlowClient를 통해 Metric에 의한 요청 및 응답을 추적합니다.</p>
+                        </div>
+                        <div class="gram">
+                            flowchart LR
+                            A[Gate] -->B[APICheckerInterceptor]
+                            --> C[MetricStream]
+                            --> D[FlowClient]
+                        </div>
+                        <h3>프로세스 플로우 : 종합</h3>
+                        <p>
+                            <img src="resource\path\folio\common-0.png" width="90%">
+                        </p>
+                        <h3>Gradle 모듈</h3>
+                        <p>
+                            <img src="resource\path\folio\common-1.png" width="90%">
+                        </p>
+<!-- CommonModule END-->
+<!-- Metrics -->
+                        <h1>Metrics</h1>
+                        <h2>다이어그램</h2>
+                        <h3>프로세스 플로우</h3>
+                        <div class="thing">
+                            <p>1. 프로세스가 진행됩니다.</p>
+                            <p>2. 추상회된 Rule을 상속받아 코드 덩어리 구현합니다.</p>
+                            <p>3. 원하는 위치에 Rule을 집어넣거나, 프로세스 진행 방향을 가로채 제어 변경하기도 합니다.</p>
+                            <p>4. 커서를 통해 진행도를 롤백하거나, 다시 진행할 수 있습니다.</p>
+                        </div>
+                        <div class="gram">
+                            flowchart LR
+                            A[Process] --> |Run|B[End]
+                            A1[Process] --> |Run|RA1[Rule A] -->
+                            RB1[Rule B] -->
+                            RC1[Rule C] --> RA1
+                            RC1[Rule C] --> B1[End]
+                            
+                            A2[Process] --> |Run|RA2[End]
+                            RA2[Rule A] -->|"Run(NextCursor)"| RB2[Rule B] --> |"RollBack(PrevCursor)"|RA2
+                            
+                        </div>
+                        <h3>Metrics 플로우</h3>
+                        <div class="thing">
+                            <p>1. 초기화가 진행되며 FlowClient를 통해 UniqueDynamicFlowContext의 메타데이터 메시지를 파악합니다.</p>
+                            <p>2. InsertComputer시 서버가 등장합니다.</p>
+                            <p>3. InsertTraffic시 컴퓨터와 컴퓨터 간의 트래픽 선을 연결합니다.</p>
+                        </div>
+
+                        <h3>Dice 플로우</h3>
+                        <div class="thing">
+                            <p>1. 초기화가 진행되며,</p>
+                            <p>2. 액터들을 월드에 소환 합니다.</p>
+                            <p>3. 유저를 활성화 하고 </p>
+                            <p>4. 활성화된 유저 기반 주사위를 던지며,</p>
+                            <p>5. 유저를 이동 시킵니다.</p>
+                            <p>6. 만약 골에 도착했다면 REnd Rule로 이동 하고 그렇지 않다면, RUserActive Rule로 이하 반복 합니다.</p>    
+                        </div>
+                        <div class="gram">
+                            flowchart LR
+                            S["프로세스 시작
+                            (FlowStart)"]
+                            A["초기화
+                            (RConstructor)"] --> 
+                            B["액터들 소환
+                            (RSpawnActors)"] --> 
+                            C["유저 활성화
+                            (RUserActive)"] -->
+                            D["주사위 던짐
+                            (RThrowDice)"] -->
+                            E["값 만큼 이동
+                            (RMoveFigure)"] -->
+                            C
+                            E -->|조건:골에 도착| F["프로세스 종료\n(FlowEnd)"] 
+                            F[REnd]
+                            ES["프로세스 종료
+                            (FlowEnd)"]
+                        </div>
+
+                        <h3>클래스 구조</h3>
+                        <div class="gram">
+                            classDiagram
+                            class Board {
+                                +Flow flow
+                                +ViewFrame viewFrame
+                                +Store store
+                                +Config config
+                            }
+                            
+                            class Flow {
+                                +FlowConnector flowConnector
+                                +flowStart()    
+                                +changeState()
+                                +sequenceProgressFlow()
+                            }
+                            
+                            class FlowConnector {
+                                +FlowConnector flowConnector
+                                +insertFlow()
+                            }
+                            
+                            class ViewFrame {
+                                +Renderer renderer
+                                +Slider Slider
+                            
+                            }
+                            
+                            class Renderer{
+                                +render()
+                                +paintComponent(Graphics)
+                            }
+                            
+                            class Store{
+                                +Map actors
+                            }
+                            
+                            class Actor {
+                                +Comp comps
+                                +attachComp()
+                                +getComp()
+                                +destroy()
+                            }
+                            
+                            class Comp{
+                                +Actor parent
+                            }
+                            
+                            class Graphic{
+                                +ImageIcon imageIcon
+                                +boolean isVisible
+                            }
+                            
+                            class Position {
+                                +int x
+                                +int y
+                            }
+                            
+                            class FlowClient{
+                                +Socket socket
+                                +insert(DynamicFlowContext)
+                                +send()
+                                +metaData()
+                            }
+                            
+                            class FlowServer{
+                                +int serverPort
+                                +ServerSocket serverSocket
+                                +msgHandle()
+                                +extractMetaDataValue()
+                            }
+                            
+                            
+                            Actor --> DiceActors
+                            Actor --> DynamicFlowActor
+                            DynamicFlowActor --> MetricsActros
+                            
+                            Comp --> Graphic
+                            Comp --> Position
+                            
+                            Thread --> FlowClient
+                            Thread --> FlowServer
+                            
+                            Board  --> Flow : references
+                            Board  --> ViewFrame : references
+                            Board  --> Store : references
+                            
+                            Store --> Actor : references
+                            
+                            Actor --> Comp : references
+                            
+                            ViewFrame  --> Renderer : references
+                            
+                            Flow  --> FlowConnector : references
+                            FlowConnector  <--> FlowServer : references
+                            
+                        </div>
+
+                        <h2>ViewFrame</h2>
+                        <div class="blockquote">
+                            <p>JavaSwing JFrame을 상속받았으며 프레임을 담당하며,
+                                <br>Renderer, Slider, ScrollBox등의 클래스를 관리하는 매니저 클래스 입니다.
+                            </p>
+                        </div>
+
+                        <h2>Renderer</h2>
+                        <div class="blockquote">
+                            <p>스토어의 Actor들을 순회하며 대상의 위치 및 그래픽 리소스를,
+                                <br>Swing의 Repaint를 통해 화면을 그려내는 클래스 입니다.
+                            </p>
+                        </div>
+
+                        <h3>actorDraw</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>해당 Actor의 Position 및 Graphic 컴포넌트를 통해
+                                        <br>객체의 위치 기반 피봇 및 정의 등을 기준으로 다수의 리소스를 그려냅니다.
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+                @Override
+                public void paintComponent(Graphics g) {
+                    super.paintComponent(g);
+                    if(!isRender) return;
+            
+                    List<Actor> actors = store.getActors();
+                    for(Actor it : actors){
+                        actorDraw(it, g);
+                    }
+                    .
+                    .
+                    
+                }
+
+                private void actorDraw(Actor actor, Graphics g){
+                    Position pos = actor.getComp("Position");
+                    ArrayList<Graphic> gps = actor.getComps("Graphic");
+                    if(pos == null || gps == null) return;
+            
+                    gps.forEach( gp ->{
+                        if(gp.isVisible()){
+                            int[] sXY = getActorRenderScreenXY(pos, gp);
+                            resourceDraw(g, gp, sXY[0], sXY[1]);
+                        }
+                    });
+                }
+                                </pre>
+                            </article>
+                        </div>
+
+                        <h2>Actor</h2>
+                        <div class="blockquote">
+                            <p>월드상 표현되는 객체 입니다. 컴포넌트를 부착하는 확장성을 지닙니다.</p>
+                        </div>
+
+                        <h3>Actor::Paper(DiceActor) </h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>Actor를 확장한 PaperActor입니다.
+                                        <br>Position, Graphic 컴포넌트를 추가 하여, 
+                                        <br>월드 상에 랜더링 될 위치 및 리소스, 레이어를 정의 합니다.
+                                        <br>종이 이미지 리소스가 백그라운드에 그려집니다.
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+                    public class Paper extends Actor {
+
+                        public Paper() {
+                            attachComp(Position.class);
+                            attachComp(Graphic.class)
+                                    .setLayer(BoardConfig.ELayer.BACK)
+                                    .setImage("paper.png")
+                                    .setSize(400, 520);
+                        }
+                    }
+                        
+                                </pre>
+                            </article>
+                        </div>
+
+                        <h2>Comp</h2>
+                        <div class="blockquote">
+                            <p>Actor에 부착되어 확장 기능을 담당하는 클래스 입니다.</p>
+                        </div>
+
+                        <h3>Comp::Graphic</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>Actor에 부착되는 Graphic 컴포넌트 입니다.
+                                        <br>리소스 및 리소스 사이즈와, 피봇을 정의하며
+                                        <br>랜더링 될 순서를 판단하는 Layer 프로퍼티 또한 존재합니다.
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+                    public class Graphic extends Comp {
+
+                        private boolean isVisible = true;
+                        private ImageIcon image;
+                        .
+                        .
+
+                        public Graphic setLayer(BoardConfig.ELayer layer){
+                            Actor parent = getParent();
+                            parent.setActorLayer( layer.getValue() );
+                            return this;
+                        }
+                    
+                        public Graphic setImage(String src){
+                            image = new ImageIcon( Util.getResourcePath(src) );
+                            width = image.getIconWidth();
+                            height = image.getIconHeight();
+                            pivotX = 0;
+                            pivotY = 0;
+                            return this;
+                        }
+                        .
+                        .
+                        .
+                    }
+                        
+                                </pre>
+                            </article>
+                        </div>
+
+                        <h2>Rule</h2>
+                        <div class="blockquote">
+                            <p>프로세스를 진행 할 Rule 입니다.
+                                <br>사용자는 run()메소드로 부터 실행 될 코드 덩어리를 구현하고 프로세스화 합니다. 
+                                <br>또한 RuleProperty 통하여 다음 프로세스를 조작 합니다.
+                                <br>탬플릿 메소드 패턴을 통한 Prev, Close Logging을
+                                <br>인터페이스로 손 쉽게 추가하거나 제거 할 수 있습니다.
+                            </p>
+                        </div>
+
+                        <h3>RConstructor</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>Dice의 시작을 알리는 Rule입니다. run 실행시 아무것도 하지 않으나, 
+                                        <br>다음 프로세스 방향을 "RSpawnActors" Rule로 향하게 합니다.
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+                    public class RConstructor extends Rule implements RulRunLogger {
+
+                        @Override
+                        protected RuleProperty ruleProperty() {
+                            return new RuleProperty()
+                                .setNextRule("RSpawnActors");
+                        }
+                    
+                        @Override
+                        public void run() {
+                        }
+                    
+                        @Override
+                        public void runPrevLog() {
+                        }
+                    
+                        @Override
+                        public void runCloseLog() {
+                            sb.appendText(getCurFlow(), "1. 초기화 성공");
+                        }
+                    }
+                        
+                                </pre>
+                            </article>
+                        </div>
+
+                        <h3>RMoveFigure</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>다음 프로세스 연결을 "RUserActive"로 향하게 합니다.
+                                        <br>run가동시 주사위 값 만큼 노드로 이동 하며,
+                                        <br>rollback시 이전 상태 만큼 복구합니다.
+                                        <br>결과 골체크에 성공했다면 다음 연결을 "REnd"로 전환 합니다.
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+                    public class RMoveFigure extends Rule 
+                        implements RuleRollback, RulRunLogger, RuleRollbackLogger {
+
+                        protected RuleProperty ruleProperty;
+                        protected BoardConfig boardConfig;
+                    
+                        @Override
+                        protected RuleProperty ruleProperty() {
+                            boardConfig = (BoardConfig) bc;
+                            ruleProperty = new RuleProperty()
+                                    .setNextRule("RUserActive");
+                            return ruleProperty;
+                        }
+                    
+                        @Override
+                        public void run() {
+                            Node node = store.getMainNode();
+                            FlowStatus flowStatus = getCurFlow();
+                            Figure figure = store.getActiveFigure(flowStatus);
+                            node.next(figure, flowStatus);
+                            if ( node.isGoalCheck(figure, boardConfig.goal) ){
+                                ruleProperty.setNextRule("REnd");
+                            }
+                    
+                        }
+                    
+                        @Override
+                        public void rollback() {
+                            Node node = store.getMainNode();
+                            FlowStatus flowStatus = getCurFlow();
+                            FlowStatus prevFindStatus = getCalcFlow(-1);
+                            Figure figure = store.getActiveFigure(flowStatus);
+                            
+                            node.prev(figure, flowStatus, prevFindStatus);
+                            ruleProperty.setNextRule("RUserActive");
+                        }
+        
+                                </pre>
+                            </article>
+                        </div>
+
+                        <h3>REnd</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>"REnd"는 다음 체인 연결이 없으므로 프로세스가 종료 됩니다.
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+                    public class REnd extends Rule 
+                        implements RuleRollback, RulRunLogger, RuleRollbackLogger {
+
+                        protected BoardConfig boardConfig;
+                    
+                        @Override
+                        protected RuleProperty ruleProperty() {
+                            boardConfig = (BoardConfig)bc;
+                            return new RuleProperty();
+                        }
+                    
+                        @Override
+                        public void run() {
+                            FlowStatus fs = getCurFlow();
+                            Victory victory = store.getFirstActor(BoardConfig.ELayer.FIGURE_FRONT, Victory.class);
+                            victory.getPosition().setPosition(6, 4);
+                            victory.visible(true);
+                            victory.toText(fs.getActiveUserIndex(), boardConfig.goal, fs.getSequence());
+                        }
+                    
+                        @Override
+                        public void rollback() {
+                            Victory victory = store.getFirstActor(BoardConfig.ELayer.FIGURE_FRONT, Victory.class);
+                            victory.visible(false);
+                        }
+        
+                                </pre>
+                            </article>
+                        </div>
+
+                        <h2>Flow</h2>
+                        <div class="blockquote">
+                            <p>프로세스를 진행하는 클래스 입니다. 프로세스 진행시 시퀀스 커서가 증가합니다.
+                                <p>시퀀스 커서 기반 가상 커서를 이전 이후로 변경하며, 상태를 롤백 할 수 있습니다.</p>
+                            </p>
+                        </div>
+
+                        <h3>sequenceProgressFlow</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>해당 룰로 상태를 변경 하며, 시퀀스 프로세스를 증가 시킵니다.
+                                        <br>진행될 프로세스는 이전의 상태값(FlowStatus)을 계승합니다.
+                                        <br>wrapRunLogger를 통해 해당 룰의 프로세스를 진행 시키며,
+                                        <br>현재 룰에 체이닝된 다음 룰을 실행하며 이하 반복합니다. 
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+                    private void changeState(String ruleType){
+                        Rule rule = getRule(ruleType);
+                        boolean isSameCursor = (flowSequence == virtualCursor);
+                        boolean isFlowSequenceProcessing = ( flowSequence == statusStore.size() - 1);
+                        if( isSameCursor && isFlowSequenceProcessing){
+                            sequenceProgressFlow(rule);
+                        }
+                    }
+                        
+                    private void sequenceProgressFlow(Rule rule){
+                        ++flowSequence;
+                        ++virtualCursor;
+                
+                        String ruleName = rule.getClass().getSimpleName();
+                        FlowStatus flowStatus = new FlowStatus(flowSequence, ruleName);
+                        FlowStatus prevStatus = hasPrevFlowStatus() ? getCalcFlow(-1) : null;
+                        if(prevStatus != null)
+                            flowStatus.duplicateWithoutUniqueFields(prevStatus);
+                        statusStore.add( flowStatus );
+                
+                        RuleProperty property = rule.getRuleProperty();
+                        OnSequenceFlowStatusHandle onSequenceFlowStatusHandle = flowConnector.getOnSequenceFlowStatusHandle();
+                        if(onSequenceFlowStatusHandle != null){
+                            onSequenceFlowStatusHandle.apply(rule, flowStatus);
+                        }
+                
+                        wrapRunLogger(rule);
+                        String next = property.getNextRule();
+                        if(next != null && !next.isEmpty()){
+                            changeState(next);
+                        }
+                    }
+                                </pre>
+                            </article>
+                        </div>
+
+                        <h3>wrapRunLogger</h3>
+                        <div class="post-root">
+                            <article class="post-content">
+                                <div class="folded-corner">
+                                    <p>템플릿 메소드 패턴을 통해 사용자는 logger 인터페이스를 통해
+                                        <br>run 실행 전 후 로깅을 손 쉽게 추적할 수 있습니다.
+                                    </p>
+                                </div>
+                                <pre class="prettyprint">
+                                    <br>
+                    private void wrapRunLogger(Rule rule){
+                        if(rule instanceof RulRunLogger){
+                            ((RulRunLogger)rule).runPrevLog();
+                        }
+                        rule.run();
+                        if(rule instanceof RulRunLogger){
+                            ((RulRunLogger)rule).runCloseLog();
+                        }
+                    }
+                                </pre>
+                            </article>
+                        </div>
+<!-- Metrics END--> 
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="flush-btn">
+                        <p>프로젝트</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

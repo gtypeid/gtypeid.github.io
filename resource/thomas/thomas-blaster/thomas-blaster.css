@@ -1,0 +1,11 @@
+.frame{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    transition: width 0.3s ease, height 0.1s ease; 
+
+    border: solid;
+}

@@ -1,0 +1,79 @@
+.frame {
+    position: absolute;
+    right: -25px;
+    margin: 0;
+    transition: top 0.7s;
+    top: -435px;
+
+}
+
+.frame:hover{
+    top: -40px;
+} 
+
+.laptop {
+    position: relative;
+    width: 650px;
+    height: 600px;
+    perspective: 500px; 
+}
+
+.laptop-screen{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.laptop-base{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.laptop-screen {
+    cursor: crosshair;
+    transform-origin: bottom;
+    transform: rotateX(90deg);
+    transition: transform 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen-content {
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.laptop-base {
+    top: 100%;
+    height: 40px;
+}
+
+.laptop-img{
+    width: auto;
+    height: auto;
+}
+
+.laptop:hover {
+    transform: rotateX(0deg);
+}
+
+.laptop-screen:hover { 
+    transform: rotateX(0deg);
+}
+
+.container{
+    position: absolute;
+    top: 245px;
+    width: 37%;
+    height: 125px;
+    left: 50%;
+    transform: translateX(-46%);
+    overflow-y: scroll;
+
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff rgb(247, 255, 27);
+}

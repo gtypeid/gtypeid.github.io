@@ -1,0 +1,11 @@
+.frame{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: solid;
+
+    left: 0px;
+    top: 0px;
+
+    cursor: pointer;
+}
