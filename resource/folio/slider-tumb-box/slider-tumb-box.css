@@ -9,4 +9,5 @@
     margin-left: 15px;
     height: 100%;
     overflow-y: scroll;
+    scrollbar-width: thin;
 }

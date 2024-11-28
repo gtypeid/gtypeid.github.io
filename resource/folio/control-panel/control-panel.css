@@ -46,6 +46,7 @@
 
 
 .profile-button{
+    display: none;
     margin:0 auto; 
     width:275px; 
     height:65px; 

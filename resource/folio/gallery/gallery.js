@@ -22,6 +22,7 @@ export default class Gallery extends WidgetResource{
         this._galleryHeight = 44;
         this._scrollIndex = -1;
         this._spawnAttachData;
+        this._folioItems = [];
 
         this._screenType = Gallery.SCREEN.MIDDLE_SCREEN;
     }
@@ -46,14 +47,13 @@ export default class Gallery extends WidgetResource{
 
 
         let i = 0;
-        let folioItems = [];
         for (const key in itme) {
             const item = itme[key];
             item.index = i++;
-            folioItems.push(item);
+            this._folioItems.push(item);
         }   
 
-        this._entityGenerator.makeElements("line-box", "gallery-item", folioItems);
+        this._entityGenerator.makeElements("line-box", "gallery-item", this._folioItems);
     }
 
     mouseEnter(target, event){
@@ -65,17 +65,24 @@ export default class Gallery extends WidgetResource{
     wheel(target, event){
         if(this._scrollLock) return;
         this._scrollLock = true;
+        const size = this._folioItems.length;
 
         setTimeout( ()=> {
             this._scrollLock = false;
-        }, 700);
+        }, 500);
         event.preventDefault();
         
         const dir = ( event.deltaY > 0) ? 1 : -1;
         if(dir > 0){
+            if(this._scrollIndex == (size - 1)){
+                return;
+            }
             this._scrollIndex++;
         }
         else{
+            if(this._scrollIndex == (-1)){
+                return;
+            }
             this._scrollIndex--;
         }
 

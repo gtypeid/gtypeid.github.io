@@ -17,6 +17,7 @@ export default class Slider extends WidgetResource{
         this._maxItemSize;
         this._isZoom = false;
         this._sliderTumbBox;
+        this._sliderCommentBox;
     }
 
     rConstructor(){
@@ -32,7 +33,7 @@ export default class Slider extends WidgetResource{
         
     }
 
-    spawnAttach(spawnAttachData){
+    async spawnAttach(spawnAttachData){
         this._spawnAttachData = spawnAttachData;
         let genItems = spawnAttachData.item.thumimgs;
         const option = this._spawnAttachData.option;
@@ -61,9 +62,12 @@ export default class Slider extends WidgetResource{
                 const replay = this.findElements("replay-button")[0];
                 replay.style.display = "block";
             }
-
             if(option.thumBox){
                 this._sliderTumbBox = this.spawnSliderTumbBox(this._spawnAttachData);
+            }
+            if(option.commentBox){
+                this._sliderCommentBox = await this.spawnCommentBox();
+                this.updateCommentBox();
             }
 
         }
@@ -162,7 +166,17 @@ export default class Slider extends WidgetResource{
             this._sliderTumbBox.activeIndex(this._activeIndex, false);
         }
 
+        if(this._sliderCommentBox){
+            this.updateCommentBox();
+        }
+
         this.replay();
+    }
+
+    updateCommentBox(){
+        const item = this._spawnAttachData.item.comments;
+        const comment = item[this._activeIndex];
+        this._sliderCommentBox.update(comment);
     }
     
     updateTumbBox(index){
@@ -191,5 +205,23 @@ export default class Slider extends WidgetResource{
             
         this._sliderTumbBox = widget.widgetResource;
         return this._sliderTumbBox;
+    }
+
+    async spawnCommentBox(){
+        const parent = this.findElements("c-wrap")[0];
+        parent.style.height = "60px";
+        parent.style.position = "absolute";
+        parent.style.bottom = "-25px";
+        parent.style.left = "-50px";
+
+        const htmlPipeLine = DocEngine.instance.htmlPipeLine;
+        const spawnAttachData = {
+            attachWidget : this
+        }
+        const widget = await htmlPipeLine.asyncRunTimeSpawnWidget( 
+            parent, "slider-comment-box", spawnAttachData);
+            
+        this._sliderCommentBox = widget.widgetResource;
+        return this._sliderCommentBox;
     }
 }

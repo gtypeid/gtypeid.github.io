@@ -26,6 +26,7 @@ export default class HighlightSubtitle extends Component{
 
         for(let it of this._contentElement.children){
             const localName = it.localName;
+            this.starPoint(it);
 
             if(localName === "h1"){
                 it.style.marginTop = "125px";
@@ -55,6 +56,15 @@ export default class HighlightSubtitle extends Component{
         });
     }
 
+    starPoint(ele){
+    }
+
+    checkStarPoint(ele, p){
+        if(ele.getAttribute("star-p")){
+            p.setAttribute("star-p", "true");
+        }  
+    }
+
     highlight(){
         const hTags = document.querySelectorAll('h1, h2, h3');
         hTags.forEach((it) => {
@@ -75,6 +85,8 @@ export default class HighlightSubtitle extends Component{
             elements[i].setAttribute("t-index", i);
 
             const p = document.createElement("p");
+            this.checkStarPoint(elements[i], p);
+
             p.innerHTML = elements[i].innerHTML;
             this._viewTag.appendChild(p);
             p.setAttribute("t-index", i);
@@ -145,7 +157,9 @@ export default class HighlightSubtitle extends Component{
                 height : "100%",
                 width : "200px",
                 overflowX : "hidden",
-                zIndex : 1
+                zIndex : 1,
+                scrollbarWidth: "thin",
+                scrollbarColor: "#12633b aliceblue"
             }
         }
         const viewTag = document.createElement("div");

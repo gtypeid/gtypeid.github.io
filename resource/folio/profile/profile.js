@@ -40,12 +40,18 @@ export default class Profile extends WidgetResource{
         }
         else{
             frame.style.display = "none";
+            this.clearInner();
         }
+    }
+
+    clearInner(){
+        const selfContent = this.findElements("top")[0];
+        selfContent.innerHTML = "";
     }
 
     updateContent(content, item){
         const selfContent = this.findElements("top")[0];
-        selfContent.innerHTML = "";
+        this.clearInner();
         selfContent.appendChild(content);
         
         Util.sequenceTree(content, (element) => {
@@ -58,7 +64,6 @@ export default class Profile extends WidgetResource{
 
         });
 
-        
         this.findElements("gram").forEach(it =>{
             mermaid.init( {
                 theme: 'neutral'
@@ -84,13 +89,14 @@ export default class Profile extends WidgetResource{
                 item : item,
                 style : {
                     width : "70%",
-                    height : "475px",
+                    height : "450px",
                     marginBottom : "50px"
                 },
                 option : {
                     thumBox : true,
                     zoomIn : true,
                     replay : true,
+                    commentBox : true,
                     genType : "contents"
                 }
             }
