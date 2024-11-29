@@ -12,10 +12,12 @@ export default class MainView extends WidgetResource {
         this._profile;
         this._gallery;
         this._controlPanel;
+        this._helpView;
     }
 
-    rConstructor(){
+    async rConstructor(){
         super.rConstructor();
+        this.spawnHelpView();
         this._gallery = new Map();
         this.spawnProfile();
         this.spawnGalleryWidget("backend", FolioBackend);
@@ -34,6 +36,18 @@ export default class MainView extends WidgetResource {
             this._profile.visible = false;
         }
         return this._profile;
+    }
+
+    async spawnHelpView(){
+        const htmlPipeLine = DocEngine.instance.htmlPipeLine;
+        const spawnAttachData = {
+            attachWidget : this
+        }
+        const frame = this.findElements("frame")[0];
+        const widget = await htmlPipeLine.asyncRunTimeSpawnWidget(frame, "help-view", spawnAttachData);
+        this._helpView = widget.widgetResource;
+        this.checkHelpMainView();
+        return this._helpView;
     }
 
     async spawnGalleryWidget(type, folioData, cb){
@@ -62,6 +76,10 @@ export default class MainView extends WidgetResource {
         return this._controlPanel;
     }
 
+    checkHelpMainView(){
+        this._helpView.helpOpen("main-help");
+    }
+
     get profile(){
         return this._profile;
     }
@@ -76,5 +94,9 @@ export default class MainView extends WidgetResource {
 
     get controlPanel(){
         return this._controlPanel;
+    }
+
+    get helpView(){
+        return this._helpView;
     }
 }

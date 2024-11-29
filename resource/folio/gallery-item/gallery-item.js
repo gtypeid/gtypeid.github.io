@@ -50,12 +50,15 @@ export default class GalleryItem extends WidgetResource{
     click(target, event){
         const className = target.className;
         const profileButton = this.key.concat('-', "detail-button");
-
         const common = DocEngine.instance.common;
+        const mainView = common.mainView;
+        const helpView = mainView.helpView;
+
         if(className === profileButton){
             const profile = common.profile;
             profile.visible = true;
             this.updateHtmlItem(profile);
+            helpView.helpOpen("detail-view");
         }
     }
 

@@ -1,0 +1,63 @@
+
+.frame{
+}
+
+
+.zoom-view{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0; 
+    left: 0; 
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.555);
+}
+
+.img-box{
+    width: 50%;
+    height: 500px;
+    margin: 0px auto;
+    margin-top: 15px;
+}
+
+.comment-box{
+    width: 50%;
+    height: 75px;
+    margin: 0px auto;
+    margin-top: 15px;
+}
+
+.comment{
+    color: white;
+    font-size: x-large;
+    font-weight: 500;
+    background-color: rgba(0, 0, 0, 0.753);
+    margin: 0px;
+}
+
+
+.zoom-img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.zoom-close-button{
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    right: 25px;
+    top: 25px;
+    cursor: pointer;
+}
+
+.icon-img{
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.icon-img:hover {
+  transform: scale(1.2);
+}
