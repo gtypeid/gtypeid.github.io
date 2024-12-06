@@ -5,6 +5,10 @@
     position: relative;
 }
 
+.frame:hover{
+    background-color: rgba(42, 193, 75, 0.093);
+}
+
 .container{
     width: 100%;
     height: 100%;

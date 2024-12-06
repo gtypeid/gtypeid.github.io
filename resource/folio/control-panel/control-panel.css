@@ -6,7 +6,7 @@
 
 .box{
     display: flex;
-    width: 750px;
+    width: 550px;
     height: 100%;
     float: right;
 
@@ -46,19 +46,20 @@
 
 
 .profile-button{
-    display: none;
+    display: block;
     margin:0 auto; 
-    width:275px; 
+    width:100px; 
     height:65px; 
     line-height:65px; 
-    background:#d5d4d4; 
+    background:#e5ff00; 
     color:#000000; 
-    font-size:18px; 
+    font-size:22px; 
     font-weight:bold; 
     text-align:center; 
     transition:0.5s all; 
     overflow:hidden;
     cursor: pointer;
+    border-radius: 10%;
 }
 
 .profile-button:hover{

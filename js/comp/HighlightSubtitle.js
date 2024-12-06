@@ -11,6 +11,7 @@ export default class HighlightSubtitle extends Component{
         this._contentElement;
         this._viewElement;
         this._viewTag;
+        this._highlightHandle;
     }
     
     bindHighlight(contentElement, viewElement){
@@ -65,6 +66,7 @@ export default class HighlightSubtitle extends Component{
         }  
     }
 
+
     highlight(){
         const hTags = document.querySelectorAll('h1, h2, h3');
         hTags.forEach((it) => {
@@ -73,9 +75,12 @@ export default class HighlightSubtitle extends Component{
             if (rect.top <= 250 && rect.bottom > 0) {
                 it.style.color = "green";
                 const tIndex = it.getAttribute("t-index");
+                if(this._highlightHandle)
+                    this._highlightHandle(it);
             }
         });
     }
+
 
     spawnContentsTag(tag, size){
         const elements = this._contentElement.querySelectorAll(tag);
@@ -173,7 +178,9 @@ export default class HighlightSubtitle extends Component{
         return viewTag;
     }
 
-    
+    set onHighlightHandle(value){
+        this._highlightHandle = value;
+    }
 
 
 }   

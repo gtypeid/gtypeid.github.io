@@ -6,6 +6,7 @@
     transition: width 0.3s ease, height 0.3s ease, left 0.7s ease;
 }
 
+
 .active-box{
     padding: 0 15px;
     width: 100%;

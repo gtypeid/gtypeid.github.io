@@ -19,8 +19,23 @@ export default class Profile extends WidgetResource{
         super.rConstructor();
         this._eventHandler = this.addComp(DocEventHandler);
         this._highlighter = this.addComp(HighlightSubtitle);
+        this._highlighter.onHighlightHandle = this.handle;
         const eh = this._eventHandler;
         eh.bindEvent(DocEventHandler.EEvent.CLICK, "flush-btn");
+    }
+
+    handle(element){
+        const type = element.innerHTML;
+        if(type === "이미지"){
+            const common = DocEngine.instance.common;
+            const mainView = common.mainView;
+            const helpView = mainView.helpView;
+            helpView.helpOpen("img-help");
+            element.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
     }
 
     click(target, event){

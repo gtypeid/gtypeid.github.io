@@ -135,3 +135,62 @@ export const Publishing2 = {
         "랜더 컬링"
     ]
 }
+
+
+ const Publishing3 = {
+    title : "U,R Project",
+    banner : "logo-5.png",
+    thumimgs : [
+        "voxel-0.gif",
+        "voxel-1.gif",
+    ],
+    thumcontent : 
+        "게임 콘텐츠 커리큘럼 중 제작했던 Unity, Unreal 작업물 입니다.<br>" +
+        "커리큘럼 과정 외 따로 Unreal을 공부하여<br>" +
+        "비슷한 구조로 Untiy 게임 콘텐츠도 제작해보았습니다." 
+    ,
+    html : "game",
+
+    titles : [
+        "Voxel: 시연 1",
+        "Voxel: 시연 2",
+        "Voxel: 시연 3",
+        "Voxel: 시연 4",
+        "한반도 지형",
+        "다른 지형",
+        "와이어 프레임 모드",
+        "청크 뷰",
+        "보이지 않는 메쉬 랜더 컬링",
+    ],
+    imgs : [
+        "voxel-0.gif",
+        "voxel-1.gif",
+        "voxel-2.gif",
+        "voxel-3.gif",
+        "voxel-0.png",
+        "voxel-1.png",
+        "voxel-2.png",
+        "voxel-3.png",
+        "voxel-4.png"
+    ],
+
+    comments : [
+        "한반도 하이트맵을 통해 높이값을 지닌<br>월드가 생성 된 모습입니다.",
+
+        "런타임중 블럭을 쌓거나, 제거하는<br>모습입니다.",
+
+        "와이어모드 및 청크 뷰를 통해<br>랜더큐브 및 청크 상태를 확인하는 모습입니다.",
+
+        "청크내의 블럭이 변환 될 시 머지 및 컬링을 통해<br>보이지 않는 면은 랜더링하지 않는 모습입니다.",
+
+        "한반도 지형 하이트맵",
+
+        "다른 지형 하이트맵",
+
+        "와이어프레임 모드",
+
+        "청크 뷰 모드",
+
+        "랜더 컬링"
+    ]
+}

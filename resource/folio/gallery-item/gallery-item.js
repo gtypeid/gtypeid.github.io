@@ -58,7 +58,7 @@ export default class GalleryItem extends WidgetResource{
             const profile = common.profile;
             profile.visible = true;
             this.updateHtmlItem(profile);
-            helpView.helpOpen("detail-view");
+            helpView.helpOpen("tag-help");
         }
     }
 
@@ -105,12 +105,18 @@ export default class GalleryItem extends WidgetResource{
             const append = 0;
             frame.style.left = position + append + 'px';
             this.active(true);
+
+            const common = DocEngine.instance.common;
+            const mainView = common.mainView;
+            const helpView = mainView.helpView;
+            helpView.helpOpen("detail-view");
         }
 
         else if(itemIndex > scrollIndex){
             const parent = this._entityData.comp.parent;
             const append = parent.scrollValue;
             const size = this._widthSize + 20;
+
             position += ( (itemIndex - scrollIndex) * size ) + append - (size * 0.75);
             frame.style.left = position + 'px';
             this.active(false);

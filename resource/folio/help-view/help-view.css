@@ -16,16 +16,16 @@
 
 .img-box{
     width: 50%;
-    height: 500px;
-    margin: 0px auto;
-    margin-top: 15px;
+    height: 100%;
+    margin: auto;
+    margin-top: -75px;
 }
 
 .comment-box{
     width: 50%;
     height: 75px;
     margin: 0px auto;
-    margin-top: 15px;
+    margin-top: -100px;
 }
 
 .comment{

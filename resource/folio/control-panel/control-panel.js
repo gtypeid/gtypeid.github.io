@@ -28,8 +28,8 @@ export default class ControlPanel extends WidgetResource{
 
         const common = DocEngine.instance.common;
         if(className === profileButton){
-            const profile = common.profile;
-            profile.visible = true;
+            const helpView = common.mainView.helpView;
+            helpView.helpOpen("main-help", true);
         }
     }
 

@@ -14,11 +14,19 @@ export default class HelpView extends WidgetResource{
         this._data = [
             {
                 src : "help0.gif",
-                comment : "백엔드 및 웹 퍼블리셔 커리큘럼 과정 작업물을 정리해보았습니다.<br>해당 카테고리 영역 내 스크롤을 이용해 위아래로 이동할 수 있습니다.",
+                comment : "해당 영역 내 마우스 스크롤을 이용해<br>다음, 이전 아이템으로 이동 합니다.",
             },
             {
                 src : "help1.gif",
+                comment : "자세히 보기를 통해<br>프로젝트의 상세 내역을 확인할 수 있습니다."
+            },
+            {
+                src : "help2.gif",
                 comment : "목차를 선택하면 원하는 부분으로 빠르게 이동할 수 있습니다."
+            },
+            {
+                src : "help3.gif",
+                comment : "아이템을 선택하여 프로젝트의 이미지를 살펴볼 수 있습니다.<br>⭐은 GIF로 재생됩니다."
             }
         ]
     }
@@ -76,7 +84,15 @@ export default class HelpView extends WidgetResource{
         commentP.innerHTML = this._data[index].comment;
     }
 
-    helpOpen(type){
+    helpOpen(type, force = false){
+        if(force){
+            Util.deleteCookie("main-help");
+            Util.deleteCookie("detail-view");
+            Util.deleteCookie("tag-help");
+            Util.deleteCookie("img-help");
+            alert("도움말 쿠키 삭제");
+        }
+
         const cookie = Util.getCookie(type);
         if(type === "main-help"){
             if(Util.isEmpty(cookie)){
@@ -92,6 +108,19 @@ export default class HelpView extends WidgetResource{
                 this.helpViewUpdate(1);
             }
         }
-
+        else if(type === "tag-help"){
+            if(Util.isEmpty(cookie)){
+                Util.setCookie(type, "ture", 3000);
+                this.visibleZoomIn(true);
+                this.helpViewUpdate(2);
+            }
+        }
+        else if(type === "img-help"){
+            if(Util.isEmpty(cookie)){
+                Util.setCookie(type, "ture", 3000);
+                this.visibleZoomIn(true);
+                this.helpViewUpdate(3);
+            }
+        }
     }
 }
