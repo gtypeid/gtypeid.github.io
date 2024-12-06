@@ -26,7 +26,8 @@ export default class Profile extends WidgetResource{
 
     handle(element){
         const type = element.innerHTML;
-        if(type === "이미지"){
+        const cookie = Util.getCookie("img-help");
+        if(type === "이미지" && Util.isEmpty(cookie) ){
             const common = DocEngine.instance.common;
             const mainView = common.mainView;
             const helpView = mainView.helpView;
@@ -35,6 +36,7 @@ export default class Profile extends WidgetResource{
                 behavior: "smooth",
                 block: "start"
             });
+            
         }
     }
 
