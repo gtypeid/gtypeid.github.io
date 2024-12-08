@@ -141,7 +141,6 @@ export const backend1 = {
 
         "RTC: 시연 1",
         "RTC: 시연 2",
-        "시그널링 서버 JOIN 이벤트",
     ],
     imgs : [
         "sc-0.gif",
@@ -156,7 +155,6 @@ export const backend1 = {
 
         "rtc-1.gif",
         "rtc-0.gif",
-        "rtc-2.png",
     ],
 
     comments : [
@@ -175,11 +173,7 @@ export const backend1 = {
         "캔버스 메타 데이터를 전달 받으며<br>"+
         "드로잉 선 & 커서 & 이미지 파일들을 동기화합니다.",
 
-        "N:N 다수의 WebRTC 연결 모습입니다.",
-
-        "시그널링 서버의 JOIN 이벤트시 처리되는 로그입니다.<br>"+
-        "E클라이언트의 접속(Join)이벤트를<br>"+
-        "다수의 클라이언트에 멀티캐스팅 하는 상태입니다."
+        "N:N 다수의 WebRTC 연결 모습입니다."
     ]
 }
 
