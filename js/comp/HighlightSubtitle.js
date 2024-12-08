@@ -12,6 +12,7 @@ export default class HighlightSubtitle extends Component{
         this._viewElement;
         this._viewTag;
         this._highlightHandle;
+        this._viewTagOverHandle;
     }
     
     bindHighlight(contentElement, viewElement){
@@ -19,6 +20,7 @@ export default class HighlightSubtitle extends Component{
         this._contentElement = wr.findElements(contentElement)[0];
         this._viewElement = wr.findElements(viewElement)[0];
         this._viewTag = this.spawnViewTag();
+
         const h1Tags = this.spawnContentsTag("h1", "large");
         const h2Tags = this.spawnContentsTag("h2", "medium");
         const h3Tags = this.spawnContentsTag("h3", "small");
@@ -173,6 +175,11 @@ export default class HighlightSubtitle extends Component{
         });
 
         viewTag.classList.add("highlight-view-tag");
+        viewTag.addEventListener("mouseenter", (event)=>{
+            if(this._viewTagOverHandle){
+                this._viewTagOverHandle(event);
+            }
+        })
         this._viewElement.appendChild(viewTag);
 
         return viewTag;
@@ -182,7 +189,9 @@ export default class HighlightSubtitle extends Component{
         this._highlightHandle = value;
     }
 
-
+    set onViewTagOverHandle(value){
+        this._viewTagOverHandle = value;
+    }
 }   
 
 

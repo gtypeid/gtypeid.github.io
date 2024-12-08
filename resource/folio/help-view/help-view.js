@@ -26,7 +26,7 @@ export default class HelpView extends WidgetResource{
             },
             {
                 src : "help3.gif",
-                comment : "아이템을 선택하여 프로젝트의 이미지를 살펴볼 수 있습니다.<br>⭐은 GIF로 재생됩니다."
+                comment : "이미지 살펴보기 입니다.<br>아이템을 선택하여 프로젝트의 이미지를 살펴볼 수 있습니다.<br>⭐은 GIF로 재생됩니다."
             }
         ]
     }

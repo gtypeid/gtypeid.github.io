@@ -11,11 +11,11 @@
     top: 0; 
     left: 0; 
     z-index: 9999;
-    background-color: rgba(0, 0, 0, 0.555);
+    background-color: rgba(0, 0, 0, 0.801);
 }
 
 .img-box{
-    width: 50%;
+    width: 55%;
     height: 100%;
     margin: auto;
     margin-top: -75px;
@@ -25,7 +25,7 @@
     width: 50%;
     height: 75px;
     margin: 0px auto;
-    margin-top: -100px;
+    margin-top: -50px;
 }
 
 .comment{

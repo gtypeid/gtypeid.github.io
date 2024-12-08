@@ -19,15 +19,16 @@ export default class Profile extends WidgetResource{
         super.rConstructor();
         this._eventHandler = this.addComp(DocEventHandler);
         this._highlighter = this.addComp(HighlightSubtitle);
-        this._highlighter.onHighlightHandle = this.handle;
+        this._highlighter.onHighlightHandle = this.hlightHandle;
+        this._highlighter.onViewTagOverHandle = this.overHandle;
         const eh = this._eventHandler;
         eh.bindEvent(DocEventHandler.EEvent.CLICK, "flush-btn");
     }
 
-    handle(element){
+    hlightHandle(element){
         const type = element.innerHTML;
         const cookie = Util.getCookie("img-help");
-        if(type === "이미지" && Util.isEmpty(cookie) ){
+        if(type === "살펴보기" && Util.isEmpty(cookie) ){
             const common = DocEngine.instance.common;
             const mainView = common.mainView;
             const helpView = mainView.helpView;
@@ -40,6 +41,13 @@ export default class Profile extends WidgetResource{
         }
     }
 
+    overHandle(element){
+        const common = DocEngine.instance.common;
+        const mainView = common.mainView;
+        const helpView = mainView.helpView;
+        helpView.helpOpen("tag-help");
+    }
+
     click(target, event){
         if(this._isActive){
             this.visible = false;
@@ -47,6 +55,10 @@ export default class Profile extends WidgetResource{
         else{
             this.visible = true;
         }
+    }
+
+    mouseEnter(target, event){
+        console.log(target);
     }
 
     set visible(value){

@@ -137,12 +137,12 @@ export const Publishing2 = {
 }
 
 
- const Publishing3 = {
+export const Publishing3 = {
     title : "U,R Project",
     banner : "logo-5.png",
     thumimgs : [
-        "voxel-0.gif",
-        "voxel-1.gif",
+        "unity-1.gif",
+        "unreal-4.gif",
     ],
     thumcontent : 
         "게임 콘텐츠 커리큘럼 중 제작했던 Unity, Unreal 작업물 입니다.<br>" +
@@ -152,45 +152,51 @@ export const Publishing2 = {
     html : "game",
 
     titles : [
-        "Voxel: 시연 1",
-        "Voxel: 시연 2",
-        "Voxel: 시연 3",
-        "Voxel: 시연 4",
-        "한반도 지형",
-        "다른 지형",
-        "와이어 프레임 모드",
-        "청크 뷰",
-        "보이지 않는 메쉬 랜더 컬링",
+        "Unity: 시연 1",
+        "Unity: 시연 2",
+        "Unity: 시연 3",
+        "Unity: 시연 4",
+
+        "Unreal: 시연 1",
+        "Unreal: 시연 2",
+        "Unreal: 시연 3",
+        "Unreal: 시연 4",
+        "Unreal: 시연 5",
+        "Unreal: 시연 6",
+        "Unreal: 시연 7",
+        "Unreal: 시연 8",
     ],
     imgs : [
-        "voxel-0.gif",
-        "voxel-1.gif",
-        "voxel-2.gif",
-        "voxel-3.gif",
-        "voxel-0.png",
-        "voxel-1.png",
-        "voxel-2.png",
-        "voxel-3.png",
-        "voxel-4.png"
+        "unity-1.gif",
+        "unity-0.gif",
+        "unity-2.gif",
+        "unity-3.gif",
+
+        "unreal-4.gif",
+        "unreal-5.gif",
+        "unreal-6.gif",
+        "unreal-7.gif",
+        "unreal-0.gif",
+        "unreal-1.gif",
+        "unreal-2.gif",
+        "unreal-3.gif",
     ],
 
     comments : [
-        "한반도 하이트맵을 통해 높이값을 지닌<br>월드가 생성 된 모습입니다.",
+        "메인 인덱스 화면 이후<br>콘텐츠 씬으로 진입하는 장면입니다.",
+        "전투 콘텐츠 장면입니다.",
+        "상점 콘텐츠 장면입니다.",
+        "엔딩 연출 이후 인덱스 씬으로 진입합니다.",
 
-        "런타임중 블럭을 쌓거나, 제거하는<br>모습입니다.",
-
-        "와이어모드 및 청크 뷰를 통해<br>랜더큐브 및 청크 상태를 확인하는 모습입니다.",
-
-        "청크내의 블럭이 변환 될 시 머지 및 컬링을 통해<br>보이지 않는 면은 랜더링하지 않는 모습입니다.",
-
-        "한반도 지형 하이트맵",
-
-        "다른 지형 하이트맵",
-
-        "와이어프레임 모드",
-
-        "청크 뷰 모드",
-
-        "랜더 컬링"
+        "스테이트 머신의 작동 모습입니다.<br>Attack상태로 변화한 상대에게 공격을 통해<br>Hit상태로 전환 시키는 모습입니다.",
+        "Attack상태에서 무기 내구도 여부로<br>Block Hit상태로 전환되는 모습입니다.<br>또한 CombatComp 및 노티파이 닷지 플래그를 통해<br>애니메이션 특정 프레임에<br>적의 공격을 무효화 하는 모습입니다.",
+        "외부 프로퍼티 노출 및 콘텐츠를 제작하는 구조를 통해<br>다양한 액션을 만들어낸 모습입니다.",
+        "애님 몽타주 세션 분할을 통해<br>돌진 시작, 반복, 종료로 구분합니다.<br>돌진 중 지속적으로 유효 범위 내 적합 판정을 찾아내며,<br>조건 부합시 종료 프로세스 재생되는 모습입니다.",
+        "InvenComp내의 아이템 습득 및<br>제작 콘텐츠 장면 입니다.",
+        "SkillComp내의 스킬 콘텐츠 장면 입니다.",
+        "외부 엑셀 csv파일기반 행선지 선택 후<br>레벨 스트리밍 및 월드에 나서는 장면입니다.",
+        "월드 상호작용 콘텐즈 장면입니다."
+        
+       
     ]
 }
