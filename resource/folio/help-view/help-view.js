@@ -68,10 +68,12 @@ export default class HelpView extends WidgetResource{
     visibleZoomIn(value){
         this._isZoom = value;
         const zoomView = this.findElements("zoom-view")[0];
+        const img = this.findElements("zoom-img")[0];
         if(this._isZoom){
             zoomView.style.display = "block";
         }
         else{
+            img.src = "/resource/path/loading.gif";
             zoomView.style.display = "none";
         }
     }
